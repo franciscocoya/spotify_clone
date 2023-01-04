@@ -1,6 +1,5 @@
-import '../styles/global.scss';
-
 import { Poppins } from '@next/font/google';
+import '../styles/global.scss';
 
 const roboto = Poppins({
   subsets: ['latin'],

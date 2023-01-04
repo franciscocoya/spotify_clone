@@ -1,0 +1,27 @@
+@mixin flex($direction: 'horizontal', $justify: 'center', $align: 'center') {
+  display: flex;
+  flex-direction: setDirection($direction);
+  justify-content: setJustify($justify);
+}
+
+@function setDirection($dir) {
+  @if $dir == 'horizontal' {
+    @return row;
+  } @else if $dir == 'vertical' {
+    @return column;
+  } @else {
+    @error 'Dirección no válida';
+  }
+}
+
+@function setJustify($just) {
+  @if $just == 'center' {
+    @return center;
+  } @else if $just == 'start' {
+    @return flex-start;
+  } @else if $just == 'end' {
+    @return flex-end;
+  } @else {
+    @error 'Dirección no válida';
+  }
+}
