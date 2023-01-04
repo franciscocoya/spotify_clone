@@ -1,11 +1,4 @@
-// Color palette
-$color-white: #ffffff;
-$color-primary: #1ed760;
-$color-primary-emphasis: #169b45;
-$color-blue: #1877f2;
-$color-dark-gray: #333333;
-$color-dark-black: #000000;
-$color-font-gray: #6a6a6a;
+@use './_variables.scss';
 
 * {
   box-sizing: border-box;
@@ -13,12 +6,38 @@ $color-font-gray: #6a6a6a;
   margin: 0;
 }
 
-// Typography styles
+/* Typography styles */
 p,
 a,
-input {
+label {
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+a {
+  color: variables.$color-primary;
+  transition: ease-in 0.2s color;
+
+  &:hover {
+    color: variables.$color-primary-emphasis;
+  }
+}
+
+/* Headings */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
 }
 
 main {
@@ -27,8 +46,18 @@ main {
   align-items: center;
 }
 
+.full-page {
+  width: 100vw;
+  height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+::selection {
+  background-color: variables.$color-primary-emphasis;
+  color: variables.$color-dark-black;
 }
