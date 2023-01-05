@@ -1,7 +1,13 @@
-@mixin flex($direction: 'horizontal', $justify: 'center', $align: 'center') {
+@mixin flex(
+  $direction: 'horizontal',
+  $justify: 'center',
+  $align: 'center',
+  $gap: 0
+) {
   display: flex;
   flex-direction: setDirection($direction);
   justify-content: setJustify($justify);
+  gap: $gap;
 }
 
 @function setDirection($dir) {
@@ -21,6 +27,10 @@
     @return flex-start;
   } @else if $just == 'end' {
     @return flex-end;
+  } @else if $just == 'evenly' {
+    @return space-evenly;
+  } @else if $just == 'between' {
+    @return space-between;
   } @else {
     @error 'Dirección no válida';
   }

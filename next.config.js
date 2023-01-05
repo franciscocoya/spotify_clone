@@ -17,6 +17,12 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  i18n: {
+    // The locales you want to support in your app
+    locales: ['en', 'es-ES'],
+    defaultLocale: 'en',
+    localeDetection: false,
+  },
 };
 
 module.exports = nextConfig;

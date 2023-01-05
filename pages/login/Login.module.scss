@@ -1,9 +1,8 @@
+// @use '@styles/_variables.scss';
+@use '@styles/_mixins.scss';
+
 .main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  @include mixins.flex('vertical', $gap: 40px);
 }
 
 .logo {

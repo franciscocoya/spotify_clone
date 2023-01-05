@@ -1,0 +1,8 @@
+@use '@styles/_variables.scss';
+@use '@styles/_mixins.scss';
+
+.form {
+  @include mixins.flex('vertical', $gap: 20px);
+  width: 100%;
+  max-width: 450px;
+}
