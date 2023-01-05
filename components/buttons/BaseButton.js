@@ -1,3 +1,12 @@
 export default function Button({ ...props }) {
-  return <button onClick={console.log('click')}>{props.text}</button>;
+  return (
+    <>
+      <button>{props.text}</button>
+      <style jsx>{`
+        button {
+          background-color: ${props.style === 'solid' ? '' : 'none'};
+        }
+      `}</style>
+    </>
+  );
 }

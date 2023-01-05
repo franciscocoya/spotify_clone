@@ -1,4 +1,7 @@
+import { AppWrapper } from '@context/state';
 import { Poppins } from '@next/font/google';
+import { useRouter } from 'next/router';
+
 import '../styles/global.scss';
 
 const roboto = Poppins({
@@ -7,9 +10,12 @@ const roboto = Poppins({
 });
 
 export default function App({ Component, pageProps }) {
+  const { locale } = useRouter();
   return (
-    <main className={roboto.className}>
-      <Component {...pageProps} />
-    </main>
+    <AppWrapper>
+      <main className={roboto.className}>
+        <Component {...pageProps} />
+      </main>
+    </AppWrapper>
   );
 }
