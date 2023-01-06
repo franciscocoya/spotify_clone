@@ -4,6 +4,7 @@ import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
 import prisma from '@lib/prisma';
 import variables from '@styles/variables.module.scss';
+import axios from 'axios';
 import Head from 'next/head';
 import { useIntl } from 'react-intl';
 import styles from './Login.module.scss';
@@ -11,7 +12,18 @@ import styles from './Login.module.scss';
 function Login({ users }) {
   const intl = useIntl();
 
-  console.log(users);
+  const signIn = async (e) => {
+    e.preventDefault();
+
+    await axios
+      .post('/api/auth/login', {
+        email: e.target.email.value,
+        password: e.target.password.value,
+      })
+      .then((res) => {
+        console.log(res.data.data);
+      });
+  };
 
   return (
     <>
@@ -20,8 +32,9 @@ function Login({ users }) {
       </Head>
       <main className={`${styles.main} full-page`}>
         <Logo width="182px" className={styles.logo} />
-        <BaseForm>
+        <BaseForm onSubmit={signIn} method="POST">
           <TextInput
+            name="email"
             required={true}
             type="text"
             autoFocus={true}
@@ -30,11 +43,18 @@ function Login({ users }) {
           />
           <TextInput
             required={true}
+            name="password"
             type="password"
             label={intl.formatMessage({ id: 'page.login.password' })}
             placeholder={intl.formatMessage({ id: 'page.login.password' })}
           />
-          <BaseButton text={intl.formatMessage({ id: 'components.buttons.login' })} style="solid" color={variables.primaryColorEmphasis} rounded />
+          <BaseButton
+            type="submit"
+            text={intl.formatMessage({ id: 'components.buttons.login' })}
+            style="solid"
+            color={variables.primaryColorEmphasis}
+            rounded
+          />
         </BaseForm>
       </main>
     </>
@@ -44,8 +64,8 @@ function Login({ users }) {
 export const getStaticProps = async () => {
   const users = await prisma.user.findMany();
   return {
-    props: { users }
-  }
-}
+    props: { users },
+  };
+};
 
-export default Login
+export default Login;

@@ -1,15 +1,9 @@
 import { generateColorShades, getContrastColor } from '@utils/colorUtil';
 
-function setButtonStyle(style = 'solid', color = 'primary') {
-  if (!['solid', 'outlined', 'text'].includes(style)) {
-    return;
-  }
-}
-
 export default function Button({ ...props }) {
   return (
     <>
-      <button>{props.text}</button>
+      <button type={props.type ?? 'button'}>{props.text}</button>
       <style jsx>{`
         button {
           background-color: ${props.style === 'solid'
