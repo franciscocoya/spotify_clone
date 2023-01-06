@@ -35,3 +35,8 @@
     @error 'Dirección no válida';
   }
 }
+
+/* Color de contraste */
+@function contrast-color($color, $dark, $light) {
+  @return if(lightness($color) < $threshold, '#FFFFFF', '#000000');
+}

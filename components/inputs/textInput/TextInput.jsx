@@ -7,7 +7,7 @@ export default function TextInput({ ...props }) {
         {props.label}
       </label>
       <input
-        autoCapitalize='false'
+        autoCapitalize="false"
         autoFocus={props.autoFocus ?? false}
         type={props.type}
         className={styles.input}
