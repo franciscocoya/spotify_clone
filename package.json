@@ -8,11 +8,13 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky install",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "prisma": "npx prisma studio"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
     "@next/font": "^13.1.1",
+    "@prisma/client": "^4.8.1",
     "eslint": "8.31.0",
     "eslint-config-next": "^13.1.1",
     "next": "13.1.1",
@@ -22,7 +24,8 @@
     "react-dom": "18.2.0",
     "react-intl": "^6.2.5",
     "sass": "^1.57.1",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "values.js": "^2.1.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
@@ -30,6 +33,6 @@
     "@svgr/webpack": "^6.5.1",
     "cross-env": "^7.0.3",
     "husky": "^8.0.0",
-    "prisma": "^4.8.0"
+    "prisma": "^4.8.1"
   }
 }
