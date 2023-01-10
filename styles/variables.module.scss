@@ -6,6 +6,8 @@ $color-blue: #1877f2;
 $color-dark-gray: #333333;
 $color-dark-black: #000000;
 $color-font-gray: #6a6a6a;
+$color-error: #e11414;
+$color-warning: #e1a014;
 
 :export {
   primaryColor: $color-primary;
@@ -15,4 +17,6 @@ $color-font-gray: #6a6a6a;
   darkBlackColor: $color-dark-black;
   fontGrayColor: $color-font-gray;
   whiteColor: $color-white;
+  errorColor: $color-error;
+  warningColor: $color-warning;
 }

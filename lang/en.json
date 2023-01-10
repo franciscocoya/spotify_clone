@@ -1,6 +1,19 @@
 {
   "page.login.email": "Email address or username",
   "page.login.password": "Password",
+  "page.login.create_account_label": "Don't have an account?",
 
-  "components.buttons.login": "Log In"
+  "page.signup.email": "What's your email?",
+  "page.signup.email_placeholder": "Enter your email.",
+  "page.signup.confirmEmail": "Confirm your email",
+  "page.signup.confirmEmail_placeholder": "Enter your email again.",
+  "page.signup.createPassword": "Create a password",
+  "page.signup.createPassword_placeholder": "Create a password.",
+  "page.signup.username": "What should we call you?",
+  "page.signup.username_placeholder": "Enter a profile name",
+  "page.signup.username_msg": "This appear on your profile",
+
+  "components.buttons.login": "Log In",
+  "components.buttons.signUp": "Sign Up",
+  "components.buttons.signUp_login": "Sign Up for Spotify"
 }
