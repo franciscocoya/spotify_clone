@@ -1,6 +1,6 @@
 import styles from './BaseForm.module.scss';
 
-export default function BaseForm({ children, ...props }) {
+function BaseForm({ children, ...props }) {
   return (
     <form
       action={props.action ?? '#'}
@@ -12,3 +12,5 @@ export default function BaseForm({ children, ...props }) {
     </form>
   );
 }
+
+export default BaseForm;
