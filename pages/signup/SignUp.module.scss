@@ -1,0 +1,9 @@
+@use '@styles/_mixins.scss';
+
+.main {
+  @include mixins.flex('vertical', $gap: 40px);
+}
+
+.login_section {
+  @include mixins.flex($align: center, $gap: 5px);
+}

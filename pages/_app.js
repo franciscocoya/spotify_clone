@@ -1,6 +1,7 @@
 import { AppWrapper } from '@context/state';
 import { Poppins } from '@next/font/google';
 import { useRouter } from 'next/router';
+import { RecoilRoot } from 'recoil';
 
 import '../styles/global.scss';
 
@@ -13,9 +14,11 @@ export default function App({ Component, pageProps }) {
   const { locale } = useRouter();
   return (
     <AppWrapper>
-      <main className={roboto.className}>
-        <Component {...pageProps} />
-      </main>
+      <RecoilRoot>
+        <main className={roboto.className}>
+          <Component {...pageProps} />
+        </main>
+      </RecoilRoot>
     </AppWrapper>
   );
 }

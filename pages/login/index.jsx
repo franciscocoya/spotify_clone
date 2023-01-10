@@ -1,15 +1,21 @@
+import BaseMessage from '@components/BaseMessage';
 import BaseButton from '@components/buttons/BaseButton';
 import BaseForm from '@components/Forms/BaseForm/BaseForm';
 import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
-import prisma from '@lib/prisma';
+import handle from '@lib/errorHandler';
 import variables from '@styles/variables.module.scss';
 import axios from 'axios';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import styles from './Login.module.scss';
 
-function Login({ users }) {
+function Login() {
+  const [error, setError] = useState(null)
+
+  const router = useRouter();
   const intl = useIntl();
 
   const signIn = async (e) => {
@@ -20,9 +26,14 @@ function Login({ users }) {
         email: e.target.email.value,
         password: e.target.password.value,
       })
-      .then((res) => {
-        console.log(res.data.data);
-      });
+      .then(res => {
+        router.push("/")
+      })
+      .catch(err => {
+        handle(err, (st, msg) => {
+          setError(msg)
+        })
+      })
   };
 
   return (
@@ -48,6 +59,7 @@ function Login({ users }) {
             label={intl.formatMessage({ id: 'page.login.password' })}
             placeholder={intl.formatMessage({ id: 'page.login.password' })}
           />
+          {/* Login button */}
           <BaseButton
             type="submit"
             text={intl.formatMessage({ id: 'components.buttons.login' })}
@@ -55,17 +67,23 @@ function Login({ users }) {
             color={variables.primaryColorEmphasis}
             rounded
           />
+          <p className={styles.createAccountTag}>{intl.formatMessage({ id: 'page.login.create_account_label' })}</p>
+          {/* SignUp button */}
+          <BaseButton
+            type="button"
+            text={intl.formatMessage({ id: 'components.buttons.signUp_login' })}
+            style="outlined"
+            color={variables.whiteColor}
+            rounded
+            action={() => router.push('/signup')}
+          />
+          {
+            error && <BaseMessage content={error} type="error" />
+          }
         </BaseForm>
       </main>
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const users = await prisma.user.findMany();
-  return {
-    props: { users },
-  };
-};
 
 export default Login;
