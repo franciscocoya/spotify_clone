@@ -13,7 +13,7 @@ import { useIntl } from 'react-intl';
 import styles from './Login.module.scss';
 
 function Login() {
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   const router = useRouter();
   const intl = useIntl();
@@ -26,14 +26,14 @@ function Login() {
         email: e.target.email.value,
         password: e.target.password.value,
       })
-      .then(res => {
-        router.push("/")
+      .then((res) => {
+        router.push('/');
       })
-      .catch(err => {
+      .catch((err) => {
         handle(err, (st, msg) => {
-          setError(msg)
-        })
-      })
+          setError(msg);
+        });
+      });
   };
 
   return (
@@ -67,7 +67,9 @@ function Login() {
             color={variables.primaryColorEmphasis}
             rounded
           />
-          <p className={styles.createAccountTag}>{intl.formatMessage({ id: 'page.login.create_account_label' })}</p>
+          <p className={styles.createAccountTag}>
+            {intl.formatMessage({ id: 'page.login.create_account_label' })}
+          </p>
           {/* SignUp button */}
           <BaseButton
             type="button"
@@ -77,9 +79,7 @@ function Login() {
             rounded
             action={() => router.push('/signup')}
           />
-          {
-            error && <BaseMessage content={error} type="error" />
-          }
+          {error && <BaseMessage content={error} type="error" />}
         </BaseForm>
       </main>
     </>

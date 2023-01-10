@@ -16,7 +16,8 @@ export default function TextInput({ ...props }) {
         placeholder={props.placeholder}
         required={props.required ?? false}
       />
-      <style jsx>{`
+      <style jsx>
+        {`
 
         label {
           color: ${variables.whiteColor}
@@ -34,7 +35,5 @@ export default function TextInput({ ...props }) {
       `}
       </style>
     </div>
-
-
   );
 }

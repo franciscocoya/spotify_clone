@@ -1,12 +1,13 @@
 @mixin flex(
   $direction: 'horizontal',
   $justify: 'center',
-  $align: 'center',
+  $align: none,
   $gap: 0
 ) {
   display: flex;
   flex-direction: setDirection($direction);
   justify-content: setJustify($justify);
+  align-items: $align;
   gap: $gap;
 }
 

@@ -1,10 +1,10 @@
-import variables from '@styles/variables.module.scss'
+import variables from '@styles/variables.module.scss';
 
 const msgTypes = {
-  'success': variables.primaryColor,
-  'error': variables.errorColor,
-  'warning': variables.warningColor
-}
+  success: variables.primaryColor,
+  error: variables.errorColor,
+  warning: variables.warningColor,
+};
 
 function BaseMessage({ ...props }) {
   return (
@@ -12,9 +12,9 @@ function BaseMessage({ ...props }) {
       <div className="msg-container">
         <p>{props.content}</p>
       </div>
-      <style jsx>{`
-
-          .msg-container{
+      <style jsx>
+        {`
+          .msg-container {
             width: 100%;
             display: flex;
             justify-content: center;
@@ -23,14 +23,13 @@ function BaseMessage({ ...props }) {
             margin: 10px 0;
           }
 
-          msg > p{
+          msg > p {
             text-align: center;
           }
-          `
-      }
+        `}
       </style>
     </>
-  )
+  );
 }
 
-export default BaseMessage
+export default BaseMessage;

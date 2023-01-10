@@ -17,17 +17,18 @@ function SignUp() {
   const createAccount = async (e) => {
     e.preventDefault();
 
-    await axios.post('/api/auth/signup', {
-      username: e.target.username,
-      email: e.target.email.value,
-      password: e.target.password.value,
-    })
+    await axios
+      .post('/api/auth/signup', {
+        username: e.target.username,
+        email: e.target.email.value,
+        password: e.target.password.value,
+      })
       .then((res) => {
         console.log(res);
         /* Redirect to Home page */
         //router.push('/');
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -45,28 +46,36 @@ function SignUp() {
             type="text"
             autoFocus={true}
             label={intl.formatMessage({ id: 'page.signup.email' })}
-            placeholder={intl.formatMessage({ id: 'page.signup.email_placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'page.signup.email_placeholder',
+            })}
           />
           <TextInput
             name="emailConfirmation"
             required={true}
             type="text"
             label={intl.formatMessage({ id: 'page.signup.confirmEmail' })}
-            placeholder={intl.formatMessage({ id: 'page.signup.confirmEmail_placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'page.signup.confirmEmail_placeholder',
+            })}
           />
           <TextInput
             required={true}
             name="password"
             type="password"
             label={intl.formatMessage({ id: 'page.signup.createPassword' })}
-            placeholder={intl.formatMessage({ id: 'page.signup.createPassword_placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'page.signup.createPassword_placeholder',
+            })}
           />
           <TextInput
             required={true}
             name="username"
             type="text"
             label={intl.formatMessage({ id: 'page.signup.username' })}
-            placeholder={intl.formatMessage({ id: 'page.signup.username_placeholder' })}
+            placeholder={intl.formatMessage({
+              id: 'page.signup.username_placeholder',
+            })}
           />
           <span>{intl.formatMessage({ id: 'page.signup.username_msg' })}</span>
 
@@ -81,7 +90,9 @@ function SignUp() {
         </BaseForm>
 
         <div className={styles.login_section}>
-          <p className={styles.createAccountTag}>{intl.formatMessage({ id: 'page.login.create_account_label' })}</p>
+          <p className={styles.createAccountTag}>
+            {intl.formatMessage({ id: 'page.login.create_account_label' })}
+          </p>
           {/* SignUp button */}
           <BaseButton
             type="button"
@@ -92,8 +103,6 @@ function SignUp() {
             action={() => router.push('/login')}
           />
         </div>
-
-
       </main>
     </>
   );
