@@ -1,22 +1,40 @@
 /* Color palette */
 $color-white: #ffffff;
+$color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
 $color-blue: #1877f2;
 $color-dark-gray: #333333;
+$color-dark-mid-gray: #181818;
 $color-dark-black: #000000;
 $color-font-gray: #6a6a6a;
 $color-error: #e11414;
 $color-warning: #e1a014;
+$color-black-transparent: rgba(0, 0, 0, 0.7);
+
+/* sidebar */
+$sidebar-padding-left: 24px;
+$sidebar-padding-right: 24px;
+
+/*Gradients */
+$main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=');
 
 :export {
   primaryColor: $color-primary;
   primaryColorEmphasis: $color-primary-emphasis;
   blueColor: $color-blue;
   darkGrayColor: $color-dark-gray;
+  darkMidGrayColor: $color-dark-mid-gray;
   darkBlackColor: $color-dark-black;
   fontGrayColor: $color-font-gray;
   whiteColor: $color-white;
+  linkNotActiveColor: $color-link-not-active;
   errorColor: $color-error;
   warningColor: $color-warning;
+  blackColorTransparent: $color-black-transparent;
+
+  sidebarPaddingLeft: $sidebar-padding-left;
+  sidebarPaddingRight: $sidebar-padding-right;
+
+  gradientNoise: $main-gradient-noise;
 }
