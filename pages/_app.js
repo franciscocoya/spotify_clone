@@ -15,9 +15,9 @@ export default function App({ Component, pageProps }) {
   return (
     <AppWrapper>
       <RecoilRoot>
-        <main className={roboto.className}>
+        <div className={`${roboto.className} root-container`}>
           <Component {...pageProps} />
-        </main>
+        </div>
       </RecoilRoot>
     </AppWrapper>
   );

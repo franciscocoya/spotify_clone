@@ -15,5 +15,17 @@
 
   "components.buttons.login": "Log In",
   "components.buttons.signUp": "Sign Up",
-  "components.buttons.signUp_login": "Sign Up for Spotify"
+  "components.buttons.signUp_login": "Sign Up for Spotify",
+
+  "components.aside.home": "Home",
+  "components.aside.search": "Search",
+  "components.aside.library": "Your library",
+  "components.aside.createNewPlaylist": "Create Playlist",
+  "components.aside.favourites": "Liked songs",
+
+  "components.toptoolbar.arrow_back": "Go back",
+  "components.toptoolbar.arrow_forward": "Go forward",
+  "components.toptoolbar.profileImage_alt": "Profile image of",
+
+  "components.player.song_details_posterAlt": "Poster of the song"
 }
