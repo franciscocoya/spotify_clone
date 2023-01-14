@@ -1,9 +1,21 @@
 import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
 import variables from '@styles/variables.module.scss';
+import axios from 'axios';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 export default function Home() {
   const currentColor = 'rgb(24, 208, 96)';
+
+  const getAllSongs = async () => {
+    await axios.get('/api/song').then((res) => {
+      console.log(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getAllSongs();
+  }, []);
 
   return (
     <>
