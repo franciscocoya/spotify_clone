@@ -5,22 +5,27 @@ function AudioControlButton({ children, ...props }) {
     <>
       <button onClick={props.action}>{children}</button>
       <style jsx>{`
-        button{
+        button {
           width: 32px;
           height: 32px;
-          place-items: center;
-          background-color: ${props.stackedIcon ? variables.whiteColor : 'transparent'};
+          appereance: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: ${props.stackedIcon
+            ? variables.whiteColor
+            : 'transparent'};
           border-radius: 50px;
+          opacity: ${props.stackedIcon ? 1 : 0.6};
         }
 
-        button:hover{
+        button:hover {
           transform: ${props.growIcon && 'scale(1.1)'};
+          opacity: 1;
         }
-
       `}</style>
     </>
-
-  )
+  );
 }
 
 export default AudioControlButton;

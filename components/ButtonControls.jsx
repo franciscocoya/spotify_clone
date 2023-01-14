@@ -1,47 +1,75 @@
+import { songIsPlayingState } from '@atoms/songAtom';
 import AudioControlButton from '@components/AudioControlButton';
-import { ArrowPathRoundedSquareIcon, ArrowTrendingUpIcon, BackwardIcon, ForwardIcon, PlayIcon } from '@heroicons/react/24/solid';
+import {
+  ArrowPathRoundedSquareIcon,
+  ArrowTrendingUpIcon,
+  BackwardIcon,
+  ForwardIcon,
+  PauseIcon,
+  PlayIcon,
+} from '@heroicons/react/24/solid';
 import variables from '@styles/variables.module.scss';
+import { useRecoilState } from 'recoil';
 
 function Controls({ ...props }) {
+  const [isPlaying, setIsPlaying] = useRecoilState(songIsPlayingState);
+
+  const toogleIsPlaying = (e) => {
+    e.preventDefault();
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <>
-      <div className='audio-control-buttons'>
+      <div className="audio-control-buttons">
         {/* Suffle */}
-        <AudioControlButton action={null}>
+        <AudioControlButton>
           <ArrowTrendingUpIcon width={24} fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Previuos song */}
-        <AudioControlButton action={null}>
+        <AudioControlButton>
           <BackwardIcon width={24} fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Play */}
-        <AudioControlButton action={null} stackedIcon={true} growIcon={true}>
-          <PlayIcon width={20} fill={variables.darkMidGrayColor} viewBox="0 0 20 20" />
-          {/* <PauseIcon width={24} fill={variables.darkMidGrayColor} viewBox="0 0 20 20" /> */}
+        <AudioControlButton
+          action={toogleIsPlaying}
+          stackedIcon={true}
+          growIcon={true}
+        >
+          {isPlaying ? (
+            <PauseIcon width={24} fill={variables.darkMidGrayColor} />
+          ) : (
+            <PlayIcon
+              width={20}
+              fill={variables.darkMidGrayColor}
+              viewBox="0 0 20 24"
+            />
+          )}
         </AudioControlButton>
 
         {/* Next song */}
-        <AudioControlButton action={null}>
+        <AudioControlButton>
           <ForwardIcon width={24} fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Repeat current song */}
-        <AudioControlButton action={null}>
+        <AudioControlButton>
           <ArrowPathRoundedSquareIcon width={24} fill={variables.whiteColor} />
         </AudioControlButton>
       </div>
       <style jsx>{`
-          .audio-control-buttons{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-          }
+        .audio-control-buttons {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 15px;
+        }
       `}</style>
-    </>);
+    </>
+  );
 }
 
 export default Controls;

@@ -28,16 +28,28 @@ function SongDetails({ poster, title, author, isLiked }) {
           })} ${title}`}
         />
         <div className="player--song-details__name">
-          <Link href="" className='song-details_song_title' style={{
-            textDecoration: 'none',
-            color: variables.whiteColor,
-            fontSize: '0.9rem'
-          }}>Serenade</Link>
-          <Link href="" className='song-details_song_artist' style={{
-            textDecoration: 'none',
-            color: variables.linkNotActiveColor,
-            fontSize: '0.8rem'
-          }}>Dover</Link>
+          <Link
+            href=""
+            className="song-details_song_title"
+            style={{
+              textDecoration: 'none',
+              color: variables.whiteColor,
+              fontSize: '0.9rem',
+            }}
+          >
+            Serenade
+          </Link>
+          <Link
+            href=""
+            className="song-details_song_artist"
+            style={{
+              textDecoration: 'none',
+              color: variables.linkNotActiveColor,
+              fontSize: '0.8rem',
+            }}
+          >
+            Dover
+          </Link>
         </div>
         <div>
           {like ? (

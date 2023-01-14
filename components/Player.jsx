@@ -18,7 +18,8 @@ function Player({ ...props }) {
           gap: 15px;
         }
       `}</style>
-    </>);
+    </>
+  );
 }
 
 export default Player;
