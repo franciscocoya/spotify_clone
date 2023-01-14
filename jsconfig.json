@@ -7,7 +7,9 @@
       "@styles/*": ["styles/*"],
       "@context/*": ["context/*"],
       "@utils/*": ["utils/*"],
-      "@lib/*": ["lib/*"]
+      "@lib/*": ["lib/*"],
+      "@vendor/*": ["public/vendor/*"],
+      "@atoms/*": ["atoms/*"]
     }
   }
 }
