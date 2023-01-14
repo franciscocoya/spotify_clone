@@ -9,7 +9,8 @@
       "@utils/*": ["utils/*"],
       "@lib/*": ["lib/*"],
       "@vendor/*": ["public/vendor/*"],
-      "@atoms/*": ["atoms/*"]
+      "@atoms/*": ["atoms/*"],
+      "@hooks/*": ["hooks/*"]
     }
   }
 }
