@@ -1,48 +1,74 @@
-import { songIsPlayingState } from '@atoms/songAtom';
 import AudioControlButton from '@components/AudioControlButton';
-import {
-  ArrowPathRoundedSquareIcon,
-  ArrowTrendingUpIcon,
-  BackwardIcon,
-  ForwardIcon,
-  PauseIcon,
-  PlayIcon,
-} from '@heroicons/react/24/solid';
+
+import { BiPlay } from 'react-icons/bi';
+import { GiPauseButton } from 'react-icons/gi';
+import { IoIosSkipBackward, IoIosSkipForward } from 'react-icons/io';
+import { RiRepeatLine } from 'react-icons/ri';
+import { TbArrowsSplit2 } from 'react-icons/tb';
+
 import variables from '@styles/variables.module.scss';
-import { useRecoilState } from 'recoil';
+
+import useAudioPlayer from '@hooks/useAudioPlayer';
+import { useEffect, useRef } from 'react';
 
 function Controls({ ...props }) {
-  const [isPlaying, setIsPlaying] = useRecoilState(songIsPlayingState);
+  const {
+    isPlaying,
+    currentSong,
+    setIsPlaying,
+    setSongDuration,
+    songDuration,
+    elapsedTime,
+    changeProgressValue,
+    setElapsedTime,
+  } = useAudioPlayer();
+
+  const audioPlayer = useRef(null);
 
   const toogleIsPlaying = (e) => {
     e.preventDefault();
-    setIsPlaying(!isPlaying);
+    const isPlayingAux = isPlaying;
+    isPlaying ? audioPlayer.current.pause() : audioPlayer.current.play();
+    setIsPlaying(!isPlayingAux);
   };
+
+  useEffect(() => {
+    changeProgressValue();
+    audioPlayer.current.currentTime = elapsedTime;
+  }, [songDuration, elapsedTime]);
+
+  // Update song duration and elapsed time
+  useEffect(() => {
+    setSongDuration(audioPlayer?.current?.duration);
+  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
   return (
     <>
       <div className="audio-control-buttons">
+        <audio ref={audioPlayer} id="player-main-current-song">
+          <source src={currentSong} />
+        </audio>
         {/* Suffle */}
         <AudioControlButton>
-          <ArrowTrendingUpIcon width={24} fill={variables.whiteColor} />
+          <TbArrowsSplit2 size="24px" fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Previuos song */}
         <AudioControlButton>
-          <BackwardIcon width={24} fill={variables.whiteColor} />
+          <IoIosSkipBackward size="24px" fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Play */}
         <AudioControlButton
-          action={toogleIsPlaying}
           stackedIcon={true}
           growIcon={true}
+          action={toogleIsPlaying}
         >
           {isPlaying ? (
-            <PauseIcon width={24} fill={variables.darkMidGrayColor} />
+            <GiPauseButton size="20px" fill={variables.darkMidGrayColor} />
           ) : (
-            <PlayIcon
-              width={20}
+            <BiPlay
+              size="32px"
               fill={variables.darkMidGrayColor}
               viewBox="0 0 20 24"
             />
@@ -51,15 +77,18 @@ function Controls({ ...props }) {
 
         {/* Next song */}
         <AudioControlButton>
-          <ForwardIcon width={24} fill={variables.whiteColor} />
+          <IoIosSkipForward size="24px" fill={variables.whiteColor} />
         </AudioControlButton>
 
         {/* Repeat current song */}
         <AudioControlButton>
-          <ArrowPathRoundedSquareIcon width={24} fill={variables.whiteColor} />
+          <RiRepeatLine size="24px" fill={variables.whiteColor} />
         </AudioControlButton>
       </div>
       <style jsx>{`
+        #player-main-current-song {
+          display: none;
+        }
         .audio-control-buttons {
           display: flex;
           flex-direction: row;

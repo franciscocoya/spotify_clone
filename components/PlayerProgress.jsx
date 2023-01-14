@@ -1,21 +1,24 @@
+import useAudioPlayer from '@hooks/useAudioPlayer';
 import variables from '@styles/variables.module.scss';
-import { hideProgressIcons, moveProgressMarker } from '@vendor/slider';
-import { useState } from 'react';
+import { prettyDuration } from '@utils/stringUtil';
+import { hideProgressIcons } from '@vendor/slider';
+import { useRef } from 'react';
 
 function PlayerProgress({ ...props }) {
-  const [elapsedTime, setElapsedTime] = useState(0);
-  let totalDuration = props.duration;
+  const { elapsedTime, songDuration, changeCurrentTime } = useAudioPlayer();
+
+  const progressBar = useRef(null);
 
   const handleRangeInput = (e) => {
-    let progressValue = moveProgressMarker(e);
-    setElapsedTime(progressValue);
+    progressBar.current.value = e.target.value;
+    changeCurrentTime(e.target.value);
   };
 
   return (
     <>
       <div className="player-progress">
         <div className="audio-progress__elapsedDuration">
-          <span>2:31</span>
+          <span>{prettyDuration(elapsedTime)}</span>
         </div>
         <div style={{ position: 'relative' }}>
           <div className="player-pseudo-progress-bar">
@@ -30,17 +33,18 @@ function PlayerProgress({ ...props }) {
             onMouseLeave={(e) => hideProgressIcons(e, true)}
           >
             <input
+              ref={progressBar}
               type="range"
-              step={0.5}
+              step={0.1}
               min={0}
-              max={100}
-              value={elapsedTime}
+              max={songDuration}
+              defaultValue="0"
               onInput={handleRangeInput}
             />
           </div>
         </div>
         <div className="audio-progress__songDuration">
-          <span>3:45</span>
+          <span>{prettyDuration(songDuration)}</span>
         </div>
       </div>
       <style jsx>{`
@@ -81,7 +85,7 @@ function PlayerProgress({ ...props }) {
           width: 15px;
           height: 15px;
           position: absolute;
-          left: 0;
+          left: ${(elapsedTime / songDuration) * 100}%;
           top: 0;
           background: ${variables.whiteColor};
           border-radius: 20px;
@@ -118,7 +122,7 @@ function PlayerProgress({ ...props }) {
           position: absolute;
           top: 0;
           width: 100%;
-          opacity: 0;
+          opacity: 1;
           z-index: 2;
           transition: opacity 0.1s 0s linear;
         }
