@@ -5,7 +5,7 @@
  * @returns 
  */
 const prettyDuration = (duration) => {
-  if (!duration || isNaN(duration)) {
+  if (isNaN(duration)) {
     return '-:-';
   }
 
