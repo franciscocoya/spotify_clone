@@ -1,17 +1,36 @@
-import { songRef } from '@lib/firebaseConfig';
-import { listAll } from 'firebase/storage';
+import { ref, songRef, storage } from '@lib/firebaseConfig';
+import { getDownloadURL, list } from 'firebase/storage';
 
 const handler = async (req, res) => {
-  await listAll(songRef)
+  let songs = [];
+  await list(songRef, { maxResults: 10 })
     .then((result) => {
-      result.items.forEach((song) => {
-        // All the items under listRef.
-        console.log(song.fullPath);
+      result.items.forEach(async (song) => {
+        await getSongData(song.fullPath).then((url) => {
+          songs.push(url);
+          if (songs.length === result.items.length) {
+            res.status(201).json({
+              songs,
+            });
+          }
+        });
       });
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.error(err);
+      res.status(404).json({
+        msg: err,
+      });
+      res.end();
+    });
+};
 
-  res.end();
+const getSongData = async (path) => {
+  const url = await getDownloadURL(ref(storage, path)).catch((err) =>
+    console.error('An error ocurred while song was downloading. ' + err)
+  );
+
+  return url;
 };
 
 export default handler;

@@ -23,6 +23,9 @@ const nextConfig = {
     defaultLocale: 'en',
     localeDetection: false,
   },
+  images: {
+    domains: ['i.scdn.co'],
+  },
 };
 
 module.exports = nextConfig;

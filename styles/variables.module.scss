@@ -1,5 +1,5 @@
 /* Color palette */
-$color-white: #ffffff;
+$color-white: #f5f4f4;
 $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
@@ -7,17 +7,21 @@ $color-blue: #1877f2;
 $color-dark-gray: #333333;
 $color-dark-mid-gray: #181818;
 $color-dark-black: #000000;
+$color-dark-body-background: #121212;
 $color-font-gray: #6a6a6a;
 $color-error: #e11414;
 $color-warning: #e1a014;
-$color-black-transparent: rgba(0, 0, 0, 0.7);
+$color-black-transparent: #000000b3;
 
 /* sidebar */
 $sidebar-padding-left: 24px;
 $sidebar-padding-right: 24px;
 
-/*Gradients */
+/* Gradients */
 $main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iLjA1IiBkPSJNMCAwaDMwMHYzMDBIMHoiLz48L3N2Zz4=');
+
+/* Cards */
+$card-border-radius: 8px;
 
 :export {
   primaryColor: $color-primary;
@@ -26,6 +30,7 @@ $main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d
   darkGrayColor: $color-dark-gray;
   darkMidGrayColor: $color-dark-mid-gray;
   darkBlackColor: $color-dark-black;
+  bodyBgDarkColor: $color-dark-body-background;
   fontGrayColor: $color-font-gray;
   whiteColor: $color-white;
   linkNotActiveColor: $color-link-not-active;
@@ -37,4 +42,6 @@ $main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d
   sidebarPaddingRight: $sidebar-padding-right;
 
   gradientNoise: $main-gradient-noise;
+
+  cardBorderRadius: $card-border-radius;
 }

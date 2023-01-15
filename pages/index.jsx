@@ -1,35 +1,43 @@
+import { homeSongsState } from '@atoms/SongAtom';
+import CardSection from '@components/CardSection';
 import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
-import variables from '@styles/variables.module.scss';
-import Head from 'next/head';
+import MetadataLayout from '@components/layouts/MetadataLayout';
+import { useIntl } from 'react-intl';
+import { useRecoilState } from 'recoil';
 
-export default function Home() {
-  const currentColor = 'rgb(24, 208, 96)';
+function Home() {
+  const intl = useIntl();
+  const [songs, setSongs] = useRecoilState(homeSongsState);
+
+  // useEffect(() => {
+  //   const loadSongs = async () => {
+  //     const result = await axios.get('/api/song/all');
+  //     setSongs(result.data.songs);
+  //   };
+
+  //   loadSongs();
+  // }, []);
 
   return (
     <>
-      <Head>
-        <title>Home - Spotify</title>
-      </Head>
-
-      <BaseLayout>
-        <div className="section-gradient"></div>
-        <div>
-          <p>Hola</p>
-        </div>
-      </BaseLayout>
-      <style jsx>{`
-        .section-gradient {
-          width: 100vw;
-          height: 400px;
-          background: ${currentColor};
-          background-image: linear-gradient(rgba(0, 0, 0, 0.6) 0, #121212 100%),
-            ${variables.gradientNoise};
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: -1;
-        }
-      `}</style>
+      <MetadataLayout
+        title={intl.formatMessage({ id: 'page.home.metadata.title' })}
+      >
+        <BaseLayout showGradient={true} currentColor={'rgb(24, 208, 96)'}>
+          <div>
+            {/* {
+              songs && songs?.map(((song, index) => (
+                <p key={index}>{song}</p>
+              )))
+            } */}
+            <CardSection />
+            {/* <p>{songs?.length}</p> */}
+          </div>
+        </BaseLayout>
+      </MetadataLayout>
+      <style jsx>{``}</style>
     </>
   );
 }
+
+export default Home;
