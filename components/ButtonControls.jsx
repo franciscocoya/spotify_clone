@@ -1,15 +1,15 @@
-import AudioControlButton from '@components/AudioControlButton';
 
-import { BiPlay } from 'react-icons/bi';
-import { GiPauseButton } from 'react-icons/gi';
-import { IoIosSkipBackward, IoIosSkipForward } from 'react-icons/io';
-import { RiRepeatLine } from 'react-icons/ri';
-import { TbArrowsSplit2 } from 'react-icons/tb';
 
-import variables from '@styles/variables.module.scss';
 
+import NextSongButton from '@components/buttons/NextSongButton';
+import PlayPauseButton from '@components/buttons/PlayPauseButton';
+import PreviousSongButton from '@components/buttons/PreviousSongButton';
+import RepeatSongButton from '@components/buttons/RepeatSongButton';
+import SufflePlayButton from '@components/buttons/SufflePlayButton';
+import CurrentSongAudio from '@components/CurrentSongAudio';
 import useAudioPlayer from '@hooks/useAudioPlayer';
 import { useEffect, useRef } from 'react';
+
 
 function Controls({ ...props }) {
   const {
@@ -17,10 +17,12 @@ function Controls({ ...props }) {
     currentSong,
     setIsPlaying,
     setSongDuration,
-    songDuration,
-    elapsedTime,
     changeProgressValue,
-    setElapsedTime,
+    progressValue,
+    isProgressDragged,
+    volume,
+    repeatCurrentSong,
+    songDuration
   } = useAudioPlayer();
 
   const audioPlayer = useRef(null);
@@ -32,10 +34,21 @@ function Controls({ ...props }) {
     setIsPlaying(!isPlayingAux);
   };
 
+  // If progress bar is touched.
   useEffect(() => {
-    changeProgressValue();
-    audioPlayer.current.currentTime = elapsedTime;
-  }, [songDuration, elapsedTime]);
+    audioPlayer.current.currentTime = progressValue;
+  }, [isProgressDragged]);
+
+  // When volume changes the value
+  useEffect(() => {
+    audioPlayer.current.volume = volume;
+  }, [volume]);
+
+  useEffect(() => {
+    if (progressValue === songDuration && repeatCurrentSong) {
+      audioPlayer.current.play();
+    }
+  }, [progressValue]);
 
   // Update song duration and elapsed time
   useEffect(() => {
@@ -45,50 +58,16 @@ function Controls({ ...props }) {
   return (
     <>
       <div className="audio-control-buttons">
-        <audio ref={audioPlayer} id="player-main-current-song">
-          <source src={currentSong} />
-        </audio>
-        {/* Suffle */}
-        <AudioControlButton>
-          <TbArrowsSplit2 size="24px" fill={variables.whiteColor} />
-        </AudioControlButton>
-
-        {/* Previuos song */}
-        <AudioControlButton>
-          <IoIosSkipBackward size="24px" fill={variables.whiteColor} />
-        </AudioControlButton>
-
-        {/* Play */}
-        <AudioControlButton
-          stackedIcon={true}
-          growIcon={true}
-          action={toogleIsPlaying}
-        >
-          {isPlaying ? (
-            <GiPauseButton size="20px" fill={variables.darkMidGrayColor} />
-          ) : (
-            <BiPlay
-              size="32px"
-              fill={variables.darkMidGrayColor}
-              viewBox="0 0 20 24"
-            />
-          )}
-        </AudioControlButton>
-
-        {/* Next song */}
-        <AudioControlButton>
-          <IoIosSkipForward size="24px" fill={variables.whiteColor} />
-        </AudioControlButton>
-
-        {/* Repeat current song */}
-        <AudioControlButton>
-          <RiRepeatLine size="24px" fill={variables.whiteColor} />
-        </AudioControlButton>
+        <CurrentSongAudio audioPlayerRef={audioPlayer} currentSong={currentSong}
+          onTimeUpdateAction={(e) => changeProgressValue(e.target.currentTime)}
+          volume={volume} />
+        <SufflePlayButton action={null} />
+        <PreviousSongButton action={null} />
+        <PlayPauseButton action={toogleIsPlaying} isPlaying={isPlaying} />
+        <NextSongButton action={null} />
+        <RepeatSongButton action={null} />
       </div>
       <style jsx>{`
-        #player-main-current-song {
-          display: none;
-        }
         .audio-control-buttons {
           display: flex;
           flex-direction: row;
