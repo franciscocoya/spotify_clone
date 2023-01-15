@@ -9,7 +9,8 @@ function CurrentSongAudio({ ...props }) {
           display: none;
         }
       `}</style>
-    </>);
+    </>
+  );
 }
 
 export default CurrentSongAudio;

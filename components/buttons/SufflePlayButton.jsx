@@ -1,6 +1,6 @@
-import AudioControlButton from "@components/AudioControlButton";
+import AudioControlButton from '@components/AudioControlButton';
 import variables from '@styles/variables.module.scss';
-import { TbArrowsSplit2 } from "react-icons/tb";
+import { TbArrowsSplit2 } from 'react-icons/tb';
 
 function SufflePlayButton({ ...props }) {
   return (

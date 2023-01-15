@@ -5,14 +5,21 @@ import { prettyDuration } from '@utils/stringUtil';
 import { useEffect, useRef } from 'react';
 
 function PlayerProgress({ ...props }) {
-  const { elapsedTime, songDuration, changeCurrentTime, progressValue, setProgressValue, setIsProgressDragged } = useAudioPlayer();
+  const {
+    elapsedTime,
+    songDuration,
+    changeCurrentTime,
+    progressValue,
+    setProgressValue,
+    setIsProgressDragged,
+  } = useAudioPlayer();
 
   const progressBar = useRef(null);
 
   // When the progress changes, update elapsed time.
   const handleRangeInput = (e) => {
     setIsProgressDragged(true); // for update time issues
-    setProgressValue(e.target.value)
+    setProgressValue(e.target.value);
     changeCurrentTime(e.target.value);
   };
 
@@ -29,13 +36,13 @@ function PlayerProgress({ ...props }) {
         </div>
 
         <ProgressBar
-          progressBarWidth='500px'
-          progressBarHeight='25px'
-          progressBarMarkerSize='15px'
-          markerLeftAdjust='1'
-          progressElapsedId='progress-bar-bg--player__elapsed'
-          progressTotalId='progress-bar-bg--player__total'
-          progressMarkerId='progress-bar--player__marker'
+          progressBarWidth="500px"
+          progressBarHeight="25px"
+          progressBarMarkerSize="15px"
+          markerLeftAdjust="1"
+          progressElapsedId="progress-bar-bg--player__elapsed"
+          progressTotalId="progress-bar-bg--player__total"
+          progressMarkerId="progress-bar--player__marker"
           inputRef={progressBar}
           min={0}
           max={songDuration}

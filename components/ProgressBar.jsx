@@ -6,14 +6,39 @@ function ProgressBar({ ...props }) {
     <>
       <div style={{ position: 'relative' }}>
         <div className="player-pseudo-progress-bar">
-          <div className="progress-bar-bg__elapsed" id={props.progressElapsedId}></div>
-          <div className="progress-bar-bg__total" id={props.progressTotalId}></div>
-          <div className="progress-bar__marker" id={props.progressMarkerId}></div>
+          <div
+            className="progress-bar-bg__elapsed"
+            id={props.progressElapsedId}
+          ></div>
+          <div
+            className="progress-bar-bg__total"
+            id={props.progressTotalId}
+          ></div>
+          <div
+            className="progress-bar__marker"
+            id={props.progressMarkerId}
+          ></div>
         </div>
         <div
           className="progress-range__hidden"
-          onMouseOver={(e) => hideProgressIcons(e, props.progressElapsedId, props.progressMarkerId, props.value, false)}
-          onMouseLeave={(e) => hideProgressIcons(e, props.progressElapsedId, props.progressMarkerId, props.value, true)}
+          onMouseOver={(e) =>
+            hideProgressIcons(
+              e,
+              props.progressElapsedId,
+              props.progressMarkerId,
+              props.value,
+              false
+            )
+          }
+          onMouseLeave={(e) =>
+            hideProgressIcons(
+              e,
+              props.progressElapsedId,
+              props.progressMarkerId,
+              props.value,
+              true
+            )
+          }
         >
           <input
             ref={props.inputRef}
@@ -28,7 +53,7 @@ function ProgressBar({ ...props }) {
         </div>
       </div>
       <style jsx>{`
-      .player-pseudo-progress-bar {
+        .player-pseudo-progress-bar {
           max-width: ${props.progressBarWidth};
           width: ${props.progressBarWidth};
           height: ${props.progressBarHeight};
@@ -37,8 +62,10 @@ function ProgressBar({ ...props }) {
           user-select: none;
         }
 
-        .player-pseudo-progress-bar:hover > #${props.progressElapsedId},
-        .progress-range__hidden:hover + #${props.progressElapsedId} {
+        .player-pseudo-progress-bar:hover
+          > #${props.progressElapsedId},
+          .progress-range__hidden:hover
+          + #${props.progressElapsedId} {
           background-color: ${variables.primaryColorEmphasis};
           opacity: 1;
         }
@@ -47,16 +74,23 @@ function ProgressBar({ ...props }) {
           width: ${props.progressBarMarkerSize};
           height: ${props.progressBarMarkerSize};
           position: absolute;
-          left: ${(props.currentProgress / props.totalProgress) * 100 - (props.currentProgress > 0 ? props.markerLeftAdjust : 0)}%;
+          left: ${(props.currentProgress / props.totalProgress) * 100 -
+          (props.currentProgress > 0 ? props.markerLeftAdjust : 0)}%;
           top: 0;
           background: ${variables.whiteColor};
           border-radius: 20px;
-          transform: translateY(calc((${props.progressBarHeight} - ${props.progressBarMarkerSize}) / 2));
+          transform: translateY(
+            calc(
+              (${props.progressBarHeight} - ${props.progressBarMarkerSize}) / 2
+            )
+          );
           z-index: 1;
         }
 
-        .player-pseudo-progress-bar > #${props.progressElapsedId},
-        .player-pseudo-progress-bar > #${props.progressTotalId} {
+        .player-pseudo-progress-bar
+          > #${props.progressElapsedId},
+          .player-pseudo-progress-bar
+          > #${props.progressTotalId} {
           height: 5px;
           position: absolute;
           transform: translateY(calc((${props.progressBarHeight} - 5px) / 2));
@@ -93,7 +127,7 @@ function ProgressBar({ ...props }) {
         }
       `}</style>
     </>
-  )
+  );
 }
 
 export default ProgressBar;
