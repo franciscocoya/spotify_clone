@@ -1,4 +1,5 @@
 import { AppWrapper } from '@context/state';
+import { DebugObserver } from '@hooks/useRecoilObserver';
 import { Poppins } from '@next/font/google';
 import { useRouter } from 'next/router';
 import { RecoilRoot } from 'recoil';
@@ -15,6 +16,7 @@ export default function App({ Component, pageProps }) {
   return (
     <AppWrapper>
       <RecoilRoot>
+        <DebugObserver />
         <div className={`${roboto.className} root-container`}>
           <Component {...pageProps} />
         </div>
