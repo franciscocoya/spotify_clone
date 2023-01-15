@@ -1,6 +1,7 @@
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import variables from '@styles/variables.module.scss';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useIntl } from 'react-intl';
@@ -17,13 +18,20 @@ function PlayerSongDetails({ poster, title, author, isLiked }) {
   return (
     <>
       <div className="player--song-details">
-        <img
-          src={
-            'https://i.scdn.co/image/ab67616d00004851adf033dfc19dc1d205106d11'
-          }
+        <Image
+          src={'/images/sample1.jfif'}
           alt={`${intl.formatMessage({
             id: 'components.player.song_details_posterAlt',
           })} ${title}`}
+          width={64}
+          height={64}
+          placeholder="blur"
+          blurDataURL="/images/img_loading_placeholder.png"
+          style={{
+            width: '64px',
+            height: '64px',
+            borderRadius: '8px',
+          }}
         />
         <div className="player--song-details__name">
           <Link
@@ -68,12 +76,6 @@ function PlayerSongDetails({ poster, title, author, isLiked }) {
           justify-content: space-between;
           align-items: center;
           gap: 20px;
-        }
-
-        .player--song-details > img {
-          width: 64px;
-          height: 64px;
-          border-radius: 8px;
         }
 
         .player--song-details__name {

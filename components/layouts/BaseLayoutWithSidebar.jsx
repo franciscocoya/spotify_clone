@@ -1,14 +1,18 @@
 import BasePlayer from '@components/BasePlayer';
 import BaseSidebar from '@components/BaseSidebar';
 import BaseToolbar from '@components/BaseToolbar';
+import variables from '@styles/variables.module.scss';
 
-function BaseLayout({ children }) {
+function BaseLayout({ children, ...props }) {
   return (
     <>
       <div className="mainWrapper">
         <BaseToolbar />
         <BaseSidebar className="baseSidebar" />
-        <div className="main-content-area">{children}</div>
+        <div className="main-content-area">
+          {props.showGradient && <div className="section-gradient"></div>}
+          {children}
+        </div>
         <BasePlayer />
       </div>
 
@@ -35,6 +39,21 @@ function BaseLayout({ children }) {
           width: 100%;
           display: flex;
           flex-direction: column;
+        }
+
+        .section-gradient {
+          width: 100vw;
+          height: 400px;
+          background: ${props.currentColor};
+          background-image: linear-gradient(
+              rgba(0, 0, 0, 0.6) 0,
+              ${variables.bodyBgDarkColor} 100%
+            ),
+            ${variables.gradientNoise};
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
         }
       `}</style>
     </>

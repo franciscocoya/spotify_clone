@@ -9,6 +9,7 @@
       "@utils/*": ["utils/*"],
       "@lib/*": ["lib/*"],
       "@vendor/*": ["public/vendor/*"],
+      "@images/*": ["public/images/*"],
       "@atoms/*": ["atoms/*"],
       "@hooks/*": ["hooks/*"]
     }
