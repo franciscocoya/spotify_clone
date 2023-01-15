@@ -1,7 +1,7 @@
-import AudioControlButton from "@components/AudioControlButton";
-import useAudioPlayer from "@hooks/useAudioPlayer";
+import AudioControlButton from '@components/AudioControlButton';
+import useAudioPlayer from '@hooks/useAudioPlayer';
 import variables from '@styles/variables.module.scss';
-import { RiRepeatLine } from "react-icons/ri";
+import { RiRepeatLine } from 'react-icons/ri';
 
 function RepeatSongButton({ ...props }) {
   const { toogleRepeatCurrentSong, repeatCurrentSong } = useAudioPlayer();
@@ -10,27 +10,32 @@ function RepeatSongButton({ ...props }) {
     <>
       <div className="repeat-current-song-button">
         <AudioControlButton action={toogleRepeatCurrentSong}>
-          <RiRepeatLine size="24px" fill={repeatCurrentSong ? variables.primaryColorEmphasis : variables.whiteColor} />
+          <RiRepeatLine
+            size="24px"
+            fill={
+              repeatCurrentSong
+                ? variables.primaryColorEmphasis
+                : variables.whiteColor
+            }
+          />
         </AudioControlButton>
-        {
-          repeatCurrentSong && <div className="repeat-active"></div>
-        }
+        {repeatCurrentSong && <div className="repeat-active"></div>}
       </div>
 
       <style jsx>{`
-        .repeat-current-song-button{
+        .repeat-current-song-button {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           position: relative;
         }
-        
-        .repeat-current-song-button:hover > .repeat-active{
+
+        .repeat-current-song-button:hover > .repeat-active {
           opacity: 0.9;
         }
-        
-        .repeat-active{
+
+        .repeat-active {
           position: absolute;
           bottom: -5px;
           width: 5px;

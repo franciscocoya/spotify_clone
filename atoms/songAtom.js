@@ -12,7 +12,7 @@ const currentPlayingSongState = atom({
   default: '/music/chilled-acoustic-indie-folk-ig-version-60s-9648.mp3',
 });
 
-/*Current song elapsed playing time */
+/* Current song elapsed playing time */
 const elapsedPlayingState = atom({
   key: 'elapsedPlayingState',
   default: 0,

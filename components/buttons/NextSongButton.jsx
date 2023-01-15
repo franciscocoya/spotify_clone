@@ -1,6 +1,6 @@
-import AudioControlButton from "@components/AudioControlButton";
+import AudioControlButton from '@components/AudioControlButton';
 import variables from '@styles/variables.module.scss';
-import { IoIosSkipForward } from "react-icons/io";
+import { IoIosSkipForward } from 'react-icons/io';
 
 function NextSongButton({ ...props }) {
   return (

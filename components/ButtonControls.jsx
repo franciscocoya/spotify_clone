@@ -1,6 +1,3 @@
-
-
-
 import NextSongButton from '@components/buttons/NextSongButton';
 import PlayPauseButton from '@components/buttons/PlayPauseButton';
 import PreviousSongButton from '@components/buttons/PreviousSongButton';
@@ -9,7 +6,6 @@ import SufflePlayButton from '@components/buttons/SufflePlayButton';
 import CurrentSongAudio from '@components/CurrentSongAudio';
 import useAudioPlayer from '@hooks/useAudioPlayer';
 import { useEffect, useRef } from 'react';
-
 
 function Controls({ ...props }) {
   const {
@@ -22,7 +18,7 @@ function Controls({ ...props }) {
     isProgressDragged,
     volume,
     repeatCurrentSong,
-    songDuration
+    songDuration,
   } = useAudioPlayer();
 
   const audioPlayer = useRef(null);
@@ -58,9 +54,12 @@ function Controls({ ...props }) {
   return (
     <>
       <div className="audio-control-buttons">
-        <CurrentSongAudio audioPlayerRef={audioPlayer} currentSong={currentSong}
+        <CurrentSongAudio
+          audioPlayerRef={audioPlayer}
+          currentSong={currentSong}
           onTimeUpdateAction={(e) => changeProgressValue(e.target.currentTime)}
-          volume={volume} />
+          volume={volume}
+        />
         <SufflePlayButton action={null} />
         <PreviousSongButton action={null} />
         <PlayPauseButton action={toogleIsPlaying} isPlaying={isPlaying} />
