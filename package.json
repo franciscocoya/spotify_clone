@@ -1,7 +1,10 @@
 {
   "name": "spotify_clone",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,7 +12,10 @@
     "lint": "next lint",
     "prepare": "husky install",
     "prettier": "prettier --write .",
-    "prisma": "npx prisma studio"
+    "prisma": "npx prisma studio",
+    "prisma:schema": "npx prisma db push",
+    "prisma:migration": "npx prisma migrate dev --name initial-state",
+    "seed": "npx prisma db seed"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",

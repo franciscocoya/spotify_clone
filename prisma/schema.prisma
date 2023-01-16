@@ -8,10 +8,225 @@ datasource db {
 }
 
 model User {
-  id       String @id @default(cuid())
-  email    String @unique
-  username String
-  password String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                String                 @id @default(uuid())
+  email             String                 @unique
+  username          String                 @db.VarChar(50)
+  password          String
+  profileImage      String?                @map("profile_image")
+  createdAt         DateTime               @default(now())
+  updatedAt         DateTime               @updatedAt
+  AudiosOnPlaylists AudiosOnPlaylists[]
+  likedSongs        LikedSong[]
+  likedAlbums       LikedAlbum[]
+  likedPlaylists    LikedPlaylist[]
+  createdPlaylists  Playlist?
+  follows           ArtistFollow[]
+  preferences       UserPreferences?
+  collaborateAt     PlaylistCollaborator[]
+
+  @@map("USERS")
+}
+
+model UserPreferences {
+  id        String      @id @default(uuid())
+  lang      AppLanguage @default(en)
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String      @unique
+  updatedAt DateTime    @updatedAt @map("updated_at")
+}
+
+model Track {
+  id           String              @id @default(uuid())
+  title        String              @db.VarChar(100)
+  url          String
+  cover        String?
+  codec        String?             @default("mp3")
+  duration     Decimal?
+  bitrate      Int?                @db.Integer
+  sampleRate   Float?              @db.Real
+  fileSize     Decimal?            @map("file_size")
+  genre        String              @default("pop")
+  explicit     Boolean             @default(false)
+  tempo        Int?                @db.Integer
+  releaseDate  DateTime            @default(now()) @map("released_at")
+  playlists    AudiosOnPlaylists[]
+  onPlaylist   Playlist?           @relation(fields: [playlistId], references: [id])
+  playlistId   String?
+  artists      Artist[]
+  album        Album               @relation(fields: [albumId], references: [id])
+  albumId      String
+  likedSong    LikedSong[]
+  songsOnAlbum SongsOnAlbum[]
+
+  @@map("TRACKS")
+}
+
+model Artist {
+  id           String         @id @default(uuid())
+  name         String
+  biography    String         @db.Text
+  profileImage String?        @map("profile_image")
+  email        String         @unique
+  verified     Boolean        @default(false)
+  songs        Track[]
+  album        Album?         @relation(fields: [albumId], references: [id])
+  albumId      String?
+  followers    Int            @default(0) @db.Integer
+  genres       String[]       @default([])
+  followBy     ArtistFollow[]
+  Show         Show[]
+  ShowArtists  ShowArtists[]
+
+  @@map("ARTISTS")
+}
+
+model Show {
+  id            String        @id @default(uuid())
+  title         String
+  date          DateTime?
+  place         String?       @map("place_google_maps_url")
+  ticketWebsite String?       @map("tickets_website")
+  publishedAt   DateTime      @default(now()) @map("published_at")
+  Artist        Artist?       @relation(fields: [artistId], references: [id])
+  artistId      String?
+  ShowArtists   ShowArtists[]
+
+  @@map("SHOW")
+}
+
+model ShowArtists {
+  artist          Artist   @relation(fields: [artistId], references: [id])
+  Show            Show     @relation(fields: [showId], references: [id])
+  isMain          Boolean  @default(false) @map("main_artist")
+  artistId        String
+  showId          String
+  confirmatedDate DateTime @default(now()) @map("confirmated_at")
+
+  @@id([artistId, showId])
+  @@map("SHOW_ARTIST")
+}
+
+model AudiosOnPlaylists {
+  track      Track    @relation(fields: [trackId], references: [id])
+  trackId    String
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  playlistId String
+  addedBy    User     @relation(fields: [userId], references: [id])
+  userId     String
+  addedAt    DateTime @default(now()) @map("added_at")
+
+  @@id([trackId, playlistId])
+  @@map("AUDIO_PLAYLIST")
+}
+
+model Playlist {
+  id                   String                 @id @default(uuid())
+  name                 String
+  description          String?
+  thumbnail            String?
+  visibility           PlaylistVisibility     @default(PRIVATE)
+  createdBy            User                   @relation(fields: [userId], references: [id])
+  userId               String                 @unique
+  AudiosOnPlaylists    AudiosOnPlaylists[]
+  tracks               Track[]
+  likedBy              LikedPlaylist[]
+  PlaylistCollaborator PlaylistCollaborator[]
+
+  @@map("PLAYLIST")
+}
+
+model PlaylistCollaborator {
+  user       User     @relation(fields: [userId], references: [id])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  userId     String
+  playlistId String
+
+  @@id([userId, playlistId])
+  @@map("PLAYLIST_COLLABORATOR")
+}
+
+model SongsOnAlbum {
+  track   Track  @relation(fields: [trackId], references: [id])
+  album   Album  @relation(fields: [albumId], references: [id])
+  trackId String
+  albumId String
+
+  @@id([trackId, albumId])
+  @@map("SONG_ALBUM")
+}
+
+model Album {
+  id          String         @id @default(uuid())
+  name        String         @db.VarChar(100)
+  cover       String?
+  type        AlbumType      @default(SINGLE)
+  tracks      Track[]
+  totalTracks Int?           @map("total_tracks") @db.Integer
+  artists     Artist[]
+  releaseDate DateTime       @default(now()) @map("release_at")
+  likedBy     LikedAlbum[]
+  songs       SongsOnAlbum[]
+
+  @@map("ALBUM")
+}
+
+model LikedSong {
+  user      User     @relation(fields: [userId], references: [id])
+  track     Track    @relation(fields: [trackId], references: [id])
+  userId    String
+  trackId   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([userId, trackId])
+  @@map("USER_SONG_LIKE")
+}
+
+model LikedAlbum {
+  user      User     @relation(fields: [userId], references: [id])
+  album     Album    @relation(fields: [albumId], references: [id])
+  userId    String
+  albumId   String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@id([userId, albumId])
+  @@map("USER_ALBUM_LIKE")
+}
+
+model LikedPlaylist {
+  user       User     @relation(fields: [userId], references: [id])
+  playlist   Playlist @relation(fields: [playlistId], references: [id])
+  userId     String
+  playlistId String
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@id([userId, playlistId])
+  @@map("USER_PLAYLIST_LIKE")
+}
+
+model ArtistFollow {
+  user     User   @relation(fields: [userId], references: [id])
+  artist   Artist @relation(fields: [artistId], references: [id])
+  userId   String
+  artistId String
+
+  @@id([userId, artistId])
+  @@map("USER_ARTIST_FOLLOW")
+}
+
+enum AlbumType {
+  DOUBLE_LP
+  EP
+  LP
+  MIXTAPE
+  SINGLE
+}
+
+enum AppLanguage {
+  es_ES
+  en
+}
+
+enum PlaylistVisibility {
+  PUBLIC
+  PRIVATE
 }
