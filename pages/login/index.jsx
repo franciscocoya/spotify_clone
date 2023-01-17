@@ -3,9 +3,8 @@ import BaseButton from '@components/buttons/BaseButton';
 import BaseForm from '@components/Forms/BaseForm/BaseForm';
 import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
-import handle from '@lib/errorHandler';
+import { login } from '@lib/auth';
 import variables from '@styles/variables.module.scss';
-import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -20,22 +19,7 @@ function Login() {
 
   const signIn = async (e) => {
     e.preventDefault();
-
-    await axios
-      .post('/api/auth/login', {
-        email: e.target.email.value,
-        password: e.target.password.value,
-      })
-      .then((res) => {
-        router.push({
-          pathname: '/',
-        });
-      })
-      .catch((err) => {
-        handle(err, (st, msg) => {
-          setError(msg);
-        });
-      });
+    await login(e.target.email.value, e.target.password.value)
   };
 
   return (

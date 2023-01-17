@@ -1,5 +1,6 @@
 import prisma from '@lib/prisma';
-import bcrypt from 'bcryptjs';
+import { setCookie } from 'cookies-next';
+var bcrypt = require('bcryptjs');
 
 const handler = async (req, res) => {
   const { email, password } = req.body;
@@ -20,12 +21,16 @@ const handler = async (req, res) => {
       const remotePass = result[0]?.password;
 
       const isPasswordValid = await comparePassword(password, remotePass);
+      console.log(isPasswordValid);
 
       if (!isPasswordValid) {
         res.status(404).json({
           msg: 'Password is not valid. Please, try again',
         });
       }
+
+      //proccess.env.LOGGED_COOKIE
+      setCookie('logged', true);
 
       res.status(201).json({
         email: result.email,
@@ -44,7 +49,7 @@ const handler = async (req, res) => {
  * @returns true if password is valid and false in other case
  */
 const comparePassword = async (plainPass, hashedPass, errorCallback) => {
-  return await bcrypt.compare(plainPass, hashedPass, errorCallback);
+  return await bcrypt.compareSync(plainPass, hashedPass);
 };
 
 export default handler;
