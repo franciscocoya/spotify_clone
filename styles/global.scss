@@ -1,0 +1,88 @@
+@use './_variables.scss';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body,
+body > div:first-child,
+div#__next,
+div#__next > div {
+  height: 100%;
+}
+
+/* Typography styles */
+p,
+a,
+label {
+  font-size: 1rem;
+  //line-height: 1.5rem;
+}
+
+button {
+  outline: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+// a {
+//   color: variables.$color-primary;
+//   transition: ease-in 0.2s color;
+
+//   &:hover {
+//     color: variables.$color-primary-emphasis;
+//   }
+// }
+
+/* Headings */
+h1 {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.menu-icon {
+  width: 30px;
+  height: auto;
+}
+
+@media only screen and (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+.root-container {
+  height: 100%;
+  position: relative;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
+
+::selection {
+  background-color: variables.$color-primary-emphasis;
+  color: variables.$color-dark-black;
+}

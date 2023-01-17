@@ -1,19 +1,49 @@
 {
   "name": "spotify_clone",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install",
+    "prettier": "prettier --write .",
+    "prisma": "npx prisma studio",
+    "prisma:schema": "npx prisma db push"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.13",
     "@next/font": "13.1.2",
+    "@prisma/client": "^4.8.1",
+    "axios": "^1.2.2",
+    "bcryptjs": "^2.4.3",
+    "compressorjs": "^1.1.1",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
+    "firebase": "^9.15.0",
+    "heroicons": "^2.0.13",
+    "howler": "^2.2.3",
+    "mapbox": "^1.0.0-beta10",
     "next": "13.1.2",
+    "next-auth": "^4.18.7",
+    "openai": "^3.1.0",
+    "prettier": "^2.8.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
+    "react-intl": "^6.2.5",
+    "recoil": "^0.7.6",
+    "sass": "^1.57.1",
+    "swr": "^2.0.0",
+    "values.js": "^2.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@svgr/webpack": "^6.5.1",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.0",
+    "prisma": "^4.8.1"
   }
 }

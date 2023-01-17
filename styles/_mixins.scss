@@ -1,0 +1,43 @@
+@mixin flex(
+  $direction: 'horizontal',
+  $justify: 'center',
+  $align: none,
+  $gap: 0
+) {
+  display: flex;
+  flex-direction: setDirection($direction);
+  justify-content: setJustify($justify);
+  align-items: $align;
+  gap: $gap;
+}
+
+@function setDirection($dir) {
+  @if $dir == 'horizontal' {
+    @return row;
+  } @else if $dir == 'vertical' {
+    @return column;
+  } @else {
+    @error 'Dirección no válida';
+  }
+}
+
+@function setJustify($just) {
+  @if $just == 'center' {
+    @return center;
+  } @else if $just == 'start' {
+    @return flex-start;
+  } @else if $just == 'end' {
+    @return flex-end;
+  } @else if $just == 'evenly' {
+    @return space-evenly;
+  } @else if $just == 'between' {
+    @return space-between;
+  } @else {
+    @error 'Dirección no válida';
+  }
+}
+
+/* Color de contraste */
+@function contrast-color($color, $dark, $light) {
+  @return if(lightness($color) < $threshold, '#FFFFFF', '#000000');
+}
