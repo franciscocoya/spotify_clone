@@ -2,6 +2,8 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
+  trailingSlash: true,
   experimental: {
     appDir: true,
   },
@@ -24,7 +26,7 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: ['i.scdn.co'],
+    domains: [],
   },
 };
 
