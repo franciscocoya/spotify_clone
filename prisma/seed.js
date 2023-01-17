@@ -46,28 +46,6 @@ async function main() {
       profileImage: 'https://randomuser.me/api/portraits/women/0.jpg',
     },
   });
-
-  // // Artists
-  // await prisma.artist.upsert({
-  //   where: { email: 'NancyTBeverly@gmail.com' },
-  //   update: {},
-  //   create: {
-  //     name: 'M-Clan',
-  //     email: 'mclan@spotify.com',
-  //     biography:
-  //       "Formerly known as Murcielagos Clan, M-Clan was formed in the early '90s. Heavily influenced by Southern rock, M-Clan debuted with Un Buen Momento in 1996, followed by Coliseum a year later. In 1999, ex-  produced Usar y Tirar, which provided an acclaimed slice of the band's folk, blues, and hard rock style. On November 23, 2000, a live acoustic performance was recorded, becoming M-Clan's fourth record. Sin Enchufe was released in 2001. After 2002's Defectos Personales , M-Clan released Sopa Fría in 2004, and a career retrospective, Retrovisión in 2006. Memorias de un Espantapájaros followed in 2008, before Para No Ver el Final in 2010, while in 2012 the Spanish rockers released Arenas Movedizas. ~ Drago Bonacich, Rovi",
-  //     verified: true,
-  //     songs: {
-  //       create: {
-  //         url: '',
-  //         title: 'Carolina - En directo 2000',
-  //         cover:
-  //           'https://i.scdn.co/image/ab67616d00001e0287eba30aba5c13ac3a259fc0',
-
-  //       },
-  //     },
-  //   },
-  // });
 }
 
 main()

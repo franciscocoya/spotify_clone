@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
@@ -8,209 +9,223 @@ datasource db {
 }
 
 model User {
-  id                String                 @id @default(uuid())
-  email             String                 @unique
-  username          String                 @db.VarChar(50)
-  password          String
-  profileImage      String?                @map("profile_image")
-  createdAt         DateTime               @default(now())
-  updatedAt         DateTime               @updatedAt
-  AudiosOnPlaylists AudiosOnPlaylists[]
-  likedSongs        LikedSong[]
-  likedAlbums       LikedAlbum[]
-  likedPlaylists    LikedPlaylist[]
-  createdPlaylists  Playlist?
-  follows           ArtistFollow[]
-  preferences       UserPreferences?
-  collaborateAt     PlaylistCollaborator[]
+  id               String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email            String                 @unique
+  username         String                 @db.VarChar(50)
+  password         String
+  profileImage     String?                @map("profile_image")
+  createdAt        DateTime               @default(now()) @db.Timestamptz()
+  updatedAt        DateTime               @default(now()) @updatedAt @db.Timestamptz()
+  playlists        SongOnPlaylists[]
+  likedSongs       LikedSong[]
+  likedAlbums      LikedAlbum[]
+  likedPlaylists   LikedPlaylist[]
+  createdPlaylists Playlist[]
+  follows          ArtistFollow[]
+  preferences      UserPreferences?
+  collaborateAt    PlaylistCollaborator[]
 
   @@map("USERS")
 }
 
 model UserPreferences {
-  id        String      @id @default(uuid())
+  id        String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   lang      AppLanguage @default(en)
   user      User        @relation(fields: [userId], references: [id])
-  userId    String      @unique
-  updatedAt DateTime    @updatedAt @map("updated_at")
+  userId    String      @unique @db.Uuid
+  updatedAt DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
+
+  @@map("USER_PREFERENCES")
 }
 
 model Track {
-  id           String              @id @default(uuid())
-  title        String              @db.VarChar(100)
+  id           String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  title        String            @db.VarChar(100)
   url          String
   cover        String?
-  codec        String?             @default("mp3")
+  codec        String?           @default("mp3")
   duration     Decimal?
-  bitrate      Int?                @db.Integer
-  sampleRate   Float?              @db.Real
-  fileSize     Decimal?            @map("file_size")
-  genre        String              @default("pop")
-  explicit     Boolean             @default(false)
-  tempo        Int?                @db.Integer
-  releaseDate  DateTime            @default(now()) @map("released_at")
-  playlists    AudiosOnPlaylists[]
-  onPlaylist   Playlist?           @relation(fields: [playlistId], references: [id])
-  playlistId   String?
-  artists      Artist[]
-  album        Album               @relation(fields: [albumId], references: [id])
-  albumId      String
+  bitrate      Int?              @db.Integer
+  sampleRate   Float?            @db.Real
+  fileSize     Decimal?          @map("file_size")
+  genre        String            @default("pop")
+  explicit     Boolean           @default(false)
+  tempo        Int?              @db.Integer
+  releaseDate  DateTime          @default(now()) @map("released_at") @db.Timestamptz()
+  playlists    SongOnPlaylists[]
+  album        Album?            @relation(fields: [albumId], references: [id])
+  albumId      String            @db.Uuid
   likedSong    LikedSong[]
   songsOnAlbum SongsOnAlbum[]
+  Playlist     Playlist?         @relation(fields: [playlistId], references: [id])
+  playlistId   String?           @db.Uuid
+  performedBy  ArtistTrack[]
 
   @@map("TRACKS")
 }
 
+model ArtistTrack {
+  artist   Artist @relation(fields: [artistId], references: [id])
+  track    Track  @relation(fields: [trackId], references: [id])
+  artistId String @db.Uuid
+  trackId  String @db.Uuid
+
+  @@id([artistId, trackId])
+  @@map("ARTIST_TRACK_PERFORMS")
+}
+
 model Artist {
-  id           String         @id @default(uuid())
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name         String
   biography    String         @db.Text
   profileImage String?        @map("profile_image")
   email        String         @unique
   verified     Boolean        @default(false)
-  songs        Track[]
   album        Album?         @relation(fields: [albumId], references: [id])
-  albumId      String?
+  albumId      String?        @db.Uuid
   followers    Int            @default(0) @db.Integer
   genres       String[]       @default([])
   followBy     ArtistFollow[]
-  Show         Show[]
-  ShowArtists  ShowArtists[]
+  shows        Show[]
+  coArtists    ShowArtists[]
+  performsAt   ArtistTrack[]
 
   @@map("ARTISTS")
 }
 
 model Show {
-  id            String        @id @default(uuid())
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   title         String
   date          DateTime?
   place         String?       @map("place_google_maps_url")
   ticketWebsite String?       @map("tickets_website")
-  publishedAt   DateTime      @default(now()) @map("published_at")
+  publishedAt   DateTime      @default(now()) @map("published_at") @db.Timestamptz()
   Artist        Artist?       @relation(fields: [artistId], references: [id])
-  artistId      String?
+  artistId      String?       @db.Uuid
   ShowArtists   ShowArtists[]
 
-  @@map("SHOW")
+  @@map("SHOWS")
 }
 
 model ShowArtists {
   artist          Artist   @relation(fields: [artistId], references: [id])
   Show            Show     @relation(fields: [showId], references: [id])
   isMain          Boolean  @default(false) @map("main_artist")
-  artistId        String
-  showId          String
-  confirmatedDate DateTime @default(now()) @map("confirmated_at")
+  artistId        String   @db.Uuid
+  showId          String   @db.Uuid
+  confirmatedDate DateTime @default(now()) @map("confirmated_at") @db.Timestamptz()
 
   @@id([artistId, showId])
-  @@map("SHOW_ARTIST")
+  @@map("SHOW_ARTISTS")
 }
 
-model AudiosOnPlaylists {
+model SongOnPlaylists {
   track      Track    @relation(fields: [trackId], references: [id])
-  trackId    String
+  trackId    String   @db.Uuid
   playlist   Playlist @relation(fields: [playlistId], references: [id])
-  playlistId String
+  playlistId String   @db.Uuid
   addedBy    User     @relation(fields: [userId], references: [id])
-  userId     String
-  addedAt    DateTime @default(now()) @map("added_at")
+  userId     String   @db.Uuid
+  addedAt    DateTime @default(now()) @map("added_at") @db.Timestamptz()
 
   @@id([trackId, playlistId])
-  @@map("AUDIO_PLAYLIST")
+  @@map("TRACK_PLAYLISTS")
 }
 
 model Playlist {
-  id                   String                 @id @default(uuid())
+  id                   String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name                 String
   description          String?
   thumbnail            String?
   visibility           PlaylistVisibility     @default(PRIVATE)
   createdBy            User                   @relation(fields: [userId], references: [id])
-  userId               String                 @unique
-  AudiosOnPlaylists    AudiosOnPlaylists[]
-  tracks               Track[]
+  userId               String                 @unique @db.Uuid
+  tracks               SongOnPlaylists[]
   likedBy              LikedPlaylist[]
   PlaylistCollaborator PlaylistCollaborator[]
+  Track                Track[]
+  createdAt            DateTime               @default(now()) @map("created_at") @db.Timestamptz()
+  updatedAt            DateTime               @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 
-  @@map("PLAYLIST")
+  @@map("PLAYLISTS")
 }
 
 model PlaylistCollaborator {
   user       User     @relation(fields: [userId], references: [id])
   playlist   Playlist @relation(fields: [playlistId], references: [id])
-  userId     String
-  playlistId String
+  userId     String   @db.Uuid
+  playlistId String   @db.Uuid
 
   @@id([userId, playlistId])
-  @@map("PLAYLIST_COLLABORATOR")
+  @@map("PLAYLIST_COLLABORATORS")
 }
 
 model SongsOnAlbum {
   track   Track  @relation(fields: [trackId], references: [id])
   album   Album  @relation(fields: [albumId], references: [id])
-  trackId String
-  albumId String
+  trackId String @db.Uuid
+  albumId String @db.Uuid
 
   @@id([trackId, albumId])
-  @@map("SONG_ALBUM")
+  @@map("SONG_ALBUMS")
 }
 
 model Album {
-  id          String         @id @default(uuid())
+  id          String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        String         @db.VarChar(100)
   cover       String?
   type        AlbumType      @default(SINGLE)
   tracks      Track[]
   totalTracks Int?           @map("total_tracks") @db.Integer
   artists     Artist[]
-  releaseDate DateTime       @default(now()) @map("release_at")
+  releaseDate DateTime       @default(now()) @map("release_at") @db.Timestamptz()
   likedBy     LikedAlbum[]
   songs       SongsOnAlbum[]
 
-  @@map("ALBUM")
+  @@map("ALBUMS")
 }
 
 model LikedSong {
   user      User     @relation(fields: [userId], references: [id])
   track     Track    @relation(fields: [trackId], references: [id])
-  userId    String
-  trackId   String
-  createdAt DateTime @default(now()) @map("created_at")
+  userId    String   @db.Uuid
+  trackId   String   @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
 
   @@id([userId, trackId])
-  @@map("USER_SONG_LIKE")
+  @@map("USER_SONG_LIKES")
 }
 
 model LikedAlbum {
   user      User     @relation(fields: [userId], references: [id])
   album     Album    @relation(fields: [albumId], references: [id])
-  userId    String
-  albumId   String
-  createdAt DateTime @default(now()) @map("created_at")
+  userId    String   @db.Uuid
+  albumId   String   @db.Uuid
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz()
 
   @@id([userId, albumId])
-  @@map("USER_ALBUM_LIKE")
+  @@map("USER_ALBUM_LIKES")
 }
 
 model LikedPlaylist {
   user       User     @relation(fields: [userId], references: [id])
   playlist   Playlist @relation(fields: [playlistId], references: [id])
-  userId     String
-  playlistId String
-  createdAt  DateTime @default(now()) @map("created_at")
+  userId     String   @db.Uuid
+  playlistId String   @db.Uuid
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz()
 
   @@id([userId, playlistId])
-  @@map("USER_PLAYLIST_LIKE")
+  @@map("USER_PLAYLIST_LIKES")
 }
 
 model ArtistFollow {
   user     User   @relation(fields: [userId], references: [id])
   artist   Artist @relation(fields: [artistId], references: [id])
-  userId   String
-  artistId String
+  userId   String @db.Uuid
+  artistId String @db.Uuid
 
   @@id([userId, artistId])
-  @@map("USER_ARTIST_FOLLOW")
+  @@map("USER_ARTIST_FOLLOWS")
 }
 
 enum AlbumType {
