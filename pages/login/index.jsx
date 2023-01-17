@@ -27,7 +27,9 @@ function Login() {
         password: e.target.password.value,
       })
       .then((res) => {
-        router.push('/');
+        router.push({
+          pathname: '/',
+        });
       })
       .catch((err) => {
         handle(err, (st, msg) => {

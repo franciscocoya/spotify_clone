@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import '../styles/globals.css'
-
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-=======
 import { AppWrapper } from '@context/state';
 import { DebugObserver } from '@hooks/useRecoilObserver';
 import { Poppins } from '@next/font/google';
@@ -29,5 +23,4 @@ export default function App({ Component, pageProps }) {
       </RecoilRoot>
     </AppWrapper>
   );
->>>>>>> database-model
 }
