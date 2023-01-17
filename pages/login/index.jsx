@@ -19,7 +19,7 @@ function Login() {
 
   const signIn = async (e) => {
     e.preventDefault();
-    await login(e.target.email.value, e.target.password.value)
+    await login(e.target.email.value, e.target.password.value);
   };
 
   return (

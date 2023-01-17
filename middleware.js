@@ -4,7 +4,8 @@ import { NextResponse } from 'next/server';
 export function middleware(req) {
   const { pathname } = req.nextUrl;
   console.log(pathname);
-  const cookie = req.cookies.get('logged')?.value;
+  //process.env.LOGGED_COOKIE
+  const cookie = req.cookies.get('logged');
 
   if (
     !pathname.startsWith('/login') &&

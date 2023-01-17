@@ -8,6 +8,7 @@
   "page.signup.confirmEmail": "Confirm your email",
   "page.signup.confirmEmail_placeholder": "Enter your email again.",
   "page.signup.createPassword": "Create a password",
+  "page.signup.confirmPassword": "Confirm your password",
   "page.signup.createPassword_placeholder": "Create a password.",
   "page.signup.username": "What should we call you?",
   "page.signup.username_placeholder": "Enter a profile name",
