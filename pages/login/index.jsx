@@ -20,12 +20,16 @@ function Login() {
 
   const signIn = async (e) => {
     e.preventDefault();
-    await login(e.target.email.value, e.target.password.value, (data, isLogged) => {
-      if (data && isLogged) {
-        authContext.setToken(crypto.randomUUID())
-        router.push('/')
+    await login(
+      e.target.email.value,
+      e.target.password.value,
+      (data, isLogged) => {
+        if (data && isLogged) {
+          authContext.setToken(crypto.randomUUID());
+          router.push('/');
+        }
       }
-    });
+    );
   };
 
   return (

@@ -54,11 +54,9 @@ model Track {
   releaseDate  DateTime          @default(now()) @map("released_at") @db.Timestamptz()
   playlists    SongOnPlaylists[]
   album        Album?            @relation(fields: [albumId], references: [id])
-  albumId      String            @db.Uuid
+  albumId      String?           @db.Uuid
   likedSong    LikedSong[]
   songsOnAlbum SongsOnAlbum[]
-  Playlist     Playlist?         @relation(fields: [playlistId], references: [id])
-  playlistId   String?           @db.Uuid
   performedBy  ArtistTrack[]
 
   @@map("TRACKS")
@@ -86,7 +84,6 @@ model Artist {
   followers    Int            @default(0) @db.Integer
   genres       String[]       @default([])
   followBy     ArtistFollow[]
-  shows        Show[]
   coArtists    ShowArtists[]
   performsAt   ArtistTrack[]
 
@@ -100,8 +97,6 @@ model Show {
   place         String?       @map("place_google_maps_url")
   ticketWebsite String?       @map("tickets_website")
   publishedAt   DateTime      @default(now()) @map("published_at") @db.Timestamptz()
-  Artist        Artist?       @relation(fields: [artistId], references: [id])
-  artistId      String?       @db.Uuid
   ShowArtists   ShowArtists[]
 
   @@map("SHOWS")
@@ -143,7 +138,6 @@ model Playlist {
   tracks               SongOnPlaylists[]
   likedBy              LikedPlaylist[]
   PlaylistCollaborator PlaylistCollaborator[]
-  Track                Track[]
   createdAt            DateTime               @default(now()) @map("created_at") @db.Timestamptz()
   updatedAt            DateTime               @default(now()) @updatedAt @map("updated_at") @db.Timestamptz()
 

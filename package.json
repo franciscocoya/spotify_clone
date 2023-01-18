@@ -49,6 +49,6 @@
     "@svgr/webpack": "^6.5.1",
     "cross-env": "^7.0.3",
     "husky": "^8.0.0",
-    "prisma": "^4.8.1"
+    "prisma": "^4.9.0"
   }
 }

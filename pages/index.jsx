@@ -32,7 +32,6 @@ function Home() {
   //   loadSongs();
   // }, []);
 
-
   return (
     <>
       <MetadataLayout
@@ -50,7 +49,7 @@ function Home() {
           </div>
           <BaseButton
             type="button"
-            text={"sign out"}
+            text={'sign out'}
             style="outlined"
             color={'#FFFFFF'}
             rounded

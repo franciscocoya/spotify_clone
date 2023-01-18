@@ -1,5 +1,6 @@
 /* Color palette */
 $color-white: #f5f4f4;
+$color-white-transparent: rgba(255, 255, 255, 0.309);
 $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
@@ -33,6 +34,7 @@ $card-border-radius: 8px;
   bodyBgDarkColor: $color-dark-body-background;
   fontGrayColor: $color-font-gray;
   whiteColor: $color-white;
+  whiteColorTransparent: $color-white-transparent;
   linkNotActiveColor: $color-link-not-active;
   errorColor: $color-error;
   warningColor: $color-warning;

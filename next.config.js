@@ -8,7 +8,22 @@ const nextConfig = {
     appDir: true,
   },
   reactStrictMode: true,
+  api: {
+    externalResolver: true,
+  },
   webpack(config) {
+    // if (isServer) {
+    //   config.externals.unshift(({ context, request }, callback) => {
+    //     if (request === 'prisma/client') {
+    //       return callback(null, `commonjs ${prismaClientPath}`);
+    //     }
+    //     if (request === './runtime' && context === prismaClientPath) {
+    //       return callback(null, `commonjs ${prismaClientPath}/runtime`);
+    //     }
+    //     callback();
+    //   });
+    // }
+
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
@@ -26,7 +41,12 @@ const nextConfig = {
     localeDetection: false,
   },
   images: {
-    domains: [],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
   },
   async headers() {
     return [
