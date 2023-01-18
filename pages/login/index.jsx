@@ -3,23 +3,29 @@ import BaseButton from '@components/buttons/BaseButton';
 import BaseForm from '@components/Forms/BaseForm/BaseForm';
 import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
+import { AuthContext } from '@context/authContext';
 import { login } from '@lib/auth';
 import variables from '@styles/variables.module.scss';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useIntl } from 'react-intl';
 import styles from './Login.module.scss';
 
 function Login() {
   const [error, setError] = useState(null);
-
   const router = useRouter();
   const intl = useIntl();
+  const authContext = useContext(AuthContext);
 
   const signIn = async (e) => {
     e.preventDefault();
-    await login(e.target.email.value, e.target.password.value);
+    await login(e.target.email.value, e.target.password.value, (data, isLogged) => {
+      if (data && isLogged) {
+        authContext.setToken(crypto.randomUUID())
+        router.push('/')
+      }
+    });
   };
 
   return (

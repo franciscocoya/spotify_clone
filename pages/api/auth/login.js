@@ -1,14 +1,13 @@
 import prisma from '@lib/prisma';
-import { setCookie } from 'cookies-next';
 var bcrypt = require('bcryptjs');
 
 const handler = async (req, res) => {
   const { email, password } = req.body;
 
   await prisma.user
-    .findMany({
+    .findUnique({
       where: {
-        OR: [{ email: { equals: email } }, { username: { equals: email } }],
+        email,
       },
     })
     .then(async (result) => {
@@ -16,12 +15,11 @@ const handler = async (req, res) => {
         res.status(404).json({
           msg: 'There are no exists a user with this email/username',
         });
+        await prisma.$disconnect();
       }
 
-      const remotePass = result[0]?.password;
-
+      const remotePass = result?.password;
       const isPasswordValid = await comparePassword(password, remotePass);
-      console.log(isPasswordValid);
 
       if (!isPasswordValid) {
         res.status(404).json({
@@ -29,16 +27,14 @@ const handler = async (req, res) => {
         });
       }
 
-      //proccess.env.LOGGED_COOKIE
-      setCookie('logged', true);
-
       res.status(201).json({
-        email: result.email,
         username: result.username,
+        email,
       });
     })
-    .catch((err) => {
+    .catch(async (err) => {
       console.log('ERROR. ' + err);
+      await prisma.$disconnect();
     });
 };
 
