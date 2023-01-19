@@ -16,8 +16,11 @@ function TrackCard({ ...props }) {
   const [artistName, setArtistName] = useState('');
   const { setSelectedArtist } = useArtist();
 
-  const selectArtistInfo = () => {
-    setSelectedArtist(props?.artist);
+  const selectArtistInfo = (shortlink) => {
+    setSelectedArtist({
+      shortlink,
+      id: props?.artist,
+    });
   };
 
   useEffect(() => {
@@ -68,7 +71,9 @@ function TrackCard({ ...props }) {
               }}
               onMouseEnter={() => setIsArtistHover(true)}
               onMouseLeave={() => setIsArtistHover(false)}
-              onClick={selectArtistInfo}
+              onClick={selectArtistInfo(
+                Math.random().toString(36).substring(2, 6)
+              )}
               scroll={false}
             >
               {props?.title}
