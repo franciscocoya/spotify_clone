@@ -1,6 +1,8 @@
 import { AppWrapper } from '@context/state';
 import { DebugObserver } from '@hooks/useRecoilObserver';
 import { Poppins } from '@next/font/google';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { RecoilRoot } from 'recoil';
 
 import '../styles/global.scss';
@@ -11,6 +13,8 @@ const roboto = Poppins({
 });
 
 export default function App({ Component, pageProps }) {
+  gsap.registerPlugin(ScrollTrigger);
+
   return (
     <AppWrapper>
       <RecoilRoot>

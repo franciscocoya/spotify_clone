@@ -2,10 +2,9 @@ import { homeSongsState } from '@atoms/SongAtom';
 import TrackCard from '@components/cards/TrackCard';
 import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
 import MetadataLayout from '@components/layouts/MetadataLayout';
-import { AuthContext } from '@context/authContext';
 import { getLimitedTracks } from '@services/trackCrudService';
 import { useRouter } from 'next/router';
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useRecoilState } from 'recoil';
 
@@ -13,12 +12,11 @@ function Home() {
   const router = useRouter();
   const intl = useIntl();
   const [songs, setSongs] = useRecoilState(homeSongsState);
-  const authContext = useContext(AuthContext);
+  //const authContext = useContext(AuthContext);
 
   useEffect(() => {
     const loadSongs = async () => {
       const result = await getLimitedTracks(5);
-      console.log(result);
       setSongs(result);
     };
 
