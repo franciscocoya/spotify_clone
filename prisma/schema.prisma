@@ -57,6 +57,8 @@ model Track {
   albumId      String?           @db.Uuid
   likedSong    LikedSong[]
   songsOnAlbum SongsOnAlbum[]
+  mainArtist   Artist            @relation(fields: [mainArtistId], references: [id])
+  mainArtistId String            @db.Uuid
   performedBy  ArtistTrack[]
 
   @@map("TRACKS")
@@ -86,6 +88,7 @@ model Artist {
   followBy     ArtistFollow[]
   coArtists    ShowArtists[]
   performsAt   ArtistTrack[]
+  Track        Track[]
 
   @@map("ARTISTS")
 }
