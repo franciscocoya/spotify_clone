@@ -16,9 +16,12 @@
 
   "page.home.metadata.title": "Home · Spotify clone",
 
+  "page.artist.metadata.title": "Spotify clone",
+
   "components.buttons.login": "Log In",
   "components.buttons.signUp": "Sign Up",
   "components.buttons.signUp_login": "Sign Up for Spotify",
+  "components.buttons.follow": "Follow",
 
   "components.aside.home": "Home",
   "components.aside.search": "Search",
