@@ -5,6 +5,7 @@ $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
 $color-blue: #1877f2;
+$color-blue-verified: #3d91f4;
 $color-dark-gray: #333333;
 $color-dark-mid-gray: #181818;
 $color-dark-black: #000000;
@@ -13,6 +14,9 @@ $color-font-gray: #6a6a6a;
 $color-error: #e11414;
 $color-warning: #e1a014;
 $color-black-transparent: #000000b3;
+
+/* Topbar */
+$topbar-height: 80px;
 
 /* sidebar */
 $sidebar-padding-left: 24px;
@@ -24,10 +28,17 @@ $main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d
 /* Cards */
 $card-border-radius: 8px;
 
+/* Layers */
+$z-index-topbar: 5;
+$z-banner-overlay: 2;
+$z-banner-background: 1;
+$z-banner-content: -1;
+
 :export {
   primaryColor: $color-primary;
   primaryColorEmphasis: $color-primary-emphasis;
   blueColor: $color-blue;
+  verifiedColor: $color-blue-verified;
   darkGrayColor: $color-dark-gray;
   darkMidGrayColor: $color-dark-mid-gray;
   darkBlackColor: $color-dark-black;
@@ -40,10 +51,17 @@ $card-border-radius: 8px;
   warningColor: $color-warning;
   blackColorTransparent: $color-black-transparent;
 
+  topbarHeight: $topbar-height;
+
   sidebarPaddingLeft: $sidebar-padding-left;
   sidebarPaddingRight: $sidebar-padding-right;
 
   gradientNoise: $main-gradient-noise;
 
   cardBorderRadius: $card-border-radius;
+
+  zIndexTopBar: $z-index-topbar;
+  zIndexBannerOverlay: $z-banner-overlay;
+  zIndexBannerBackground: $z-banner-background;
+  zIndexBannerContent: $z-banner-content;
 }
