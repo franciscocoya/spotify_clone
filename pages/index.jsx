@@ -1,12 +1,11 @@
 import { homeSongsState } from '@atoms/SongAtom';
-import BaseButton from '@components/buttons/BaseButton';
-import CardSection from '@components/CardSection';
+import TrackCard from '@components/cards/TrackCard';
 import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
 import MetadataLayout from '@components/layouts/MetadataLayout';
 import { AuthContext } from '@context/authContext';
-import { setCookie } from 'cookies-next';
+import { getLimitedTracks } from '@services/trackCrudService';
 import { useRouter } from 'next/router';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useRecoilState } from 'recoil';
 
@@ -16,21 +15,17 @@ function Home() {
   const [songs, setSongs] = useRecoilState(homeSongsState);
   const authContext = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   // if (getCookie('logged') === false) {
-  //   //   router.push('/login')
-  //   // }
-  //   console.log('cookie: ' + getCookie('logged').toString() + ' ' + typeof getCookie('logged'));
-  // }, [])
+  useEffect(() => {
+    const loadSongs = async () => {
+      const result = await getLimitedTracks(5);
+      console.log(result);
+      setSongs(result);
+    };
 
-  // useEffect(() => {
-  //   const loadSongs = async () => {
-  //     const result = await axios.get('/api/song/all');
-  //     setSongs(result.data.songs);
-  //   };
-
-  //   loadSongs();
-  // }, []);
+    if (!songs || songs.length == 0) {
+      loadSongs();
+    }
+  }, []);
 
   return (
     <>
@@ -39,22 +34,32 @@ function Home() {
       >
         <BaseLayout showGradient={true} currentColor={'rgb(24, 208, 96)'}>
           <div>
-            {/* {
-              songs && songs?.map(((song, index) => (
-                <p key={index}>{song}</p>
-              )))
-            } */}
-            <CardSection />
+            {songs &&
+              songs?.map((song, index) => (
+                <TrackCard
+                  key={index}
+                  position={index + 1}
+                  title={song.title}
+                  album={song?.album?.name}
+                  artist={song?.performedBy && song?.performedBy[0]?.artistId}
+                  createdAt={song.releaseDate}
+                  cover={song.cover}
+                />
+              ))}
+            {/* <CardSection /> */}
             {/* <p>{songs?.length}</p> */}
+            {/* <TrackCard />
+            <TrackCard />
+            <TrackCard /> */}
           </div>
-          <BaseButton
+          {/* <BaseButton
             type="button"
             text={'sign out'}
             style="outlined"
             color={'#FFFFFF'}
             rounded
             action={() => setCookie('logged', false)}
-          />
+          /> */}
         </BaseLayout>
       </MetadataLayout>
       <style jsx>{``}</style>

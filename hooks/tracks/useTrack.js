@@ -1,5 +1,5 @@
 import { homeSongsState } from '@atoms/SongAtom';
-import { getLimitedTracks } from '@services/tracks/trackCrudService';
+import { getLimitedTracks } from '@services/trackCrudService';
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 
