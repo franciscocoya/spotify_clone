@@ -17,11 +17,28 @@
   "page.home.metadata.title": "Home · Spotify clone",
 
   "page.artist.metadata.title": "Spotify clone",
+  "page.artist.biography.title": "About",
+  "page.artist.playlist.title": "Playlist",
+  "page.artist.playlist.empty": "There are not playlist",
+  "page.artist.tracks.title": "Songs",
+  "page.artist.tracks.empty": "There are not songs",
+
+  "page.upload.metadata.title": "Upload new track · Spotify Clone",
+  "page.upload.title": "Upload new track",
+  "page.upload.form.title": "Title",
+  "page.upload.form.title.placeholder": "Enter the track title.",
+  "page.upload.form.genre": "Genre",
+  "page.upload.form.genre.placeholder": "Select a genre.",
+  "page.upload.form.album": "Album",
+  "page.upload.form.album.placeholder": "Select an album.",
 
   "components.buttons.login": "Log In",
   "components.buttons.signUp": "Sign Up",
   "components.buttons.signUp_login": "Sign Up for Spotify",
   "components.buttons.follow": "Follow",
+  "components.buttons.showMore": "Show more",
+  "components.buttons.showLess": "Show less",
+  "components.buttons.uploadTrack": "Upload",
 
   "components.aside.home": "Home",
   "components.aside.search": "Search",

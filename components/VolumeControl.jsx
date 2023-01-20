@@ -19,7 +19,6 @@ function VolumeControl({ ...props }) {
   };
 
   const handleRangeInput = (e) => {
-    console.log(e.target.value);
     setVolume(e.target.value);
   };
 

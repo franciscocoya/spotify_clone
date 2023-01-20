@@ -10,6 +10,7 @@ function FollowButton({ ...props }) {
       </button>
       <style jsx>{`
         button {
+          width: 100%;
           font-size: 0.8rem;
           font-weight: 600;
           text-transform: uppercase;

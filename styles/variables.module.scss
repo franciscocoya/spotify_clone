@@ -4,6 +4,7 @@ $color-white-transparent: rgba(255, 255, 255, 0.309);
 $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
+$color-primary-emphasis-transparent: rgba(30, 215, 95, 0.15);
 $color-blue: #1877f2;
 $color-blue-verified: #3d91f4;
 $color-dark-gray: #333333;
@@ -40,6 +41,7 @@ $z-index-original-progress-bar: 7;
 :export {
   primaryColor: $color-primary;
   primaryColorEmphasis: $color-primary-emphasis;
+  primaryColorEmphasisTransparent: $color-primary-emphasis-transparent;
   blueColor: $color-blue;
   verifiedColor: $color-blue-verified;
   darkGrayColor: $color-dark-gray;

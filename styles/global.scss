@@ -14,11 +14,24 @@ div#__next > div {
   height: 100%;
 }
 
+p,
+a,
+span,
+label,
+button,
+h1,
+h2,
+h3,
+img {
+  user-select: none;
+}
+
 /* Typography styles */
 p,
 a,
 label {
   font-size: 1rem;
+
   //line-height: 1.5rem;
 }
 
@@ -75,6 +88,19 @@ main {
 .full-page {
   width: 100vw;
   height: 100vh;
+}
+
+// A content section. eg. Artist profile
+.content-section {
+  margin-bottom: 50px;
+}
+
+// If a section is empty
+.empty-section-message {
+  font-size: 3rem;
+  font-weight: 600;
+  color: variables.$color-dark-gray;
+  user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {
