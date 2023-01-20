@@ -8,6 +8,7 @@ $color-blue: #1877f2;
 $color-blue-verified: #3d91f4;
 $color-dark-gray: #333333;
 $color-dark-mid-gray: #181818;
+$color-dark-mid-gray-transparent: #181818ed;
 $color-dark-black: #000000;
 $color-dark-body-background: #121212;
 $color-font-gray: #6a6a6a;
@@ -30,9 +31,11 @@ $card-border-radius: 8px;
 
 /* Layers */
 $z-index-topbar: 5;
-$z-banner-overlay: 2;
-$z-banner-background: 1;
-$z-banner-content: -1;
+$z-index-banner-overlay: 2;
+$z-index-banner-background: 1;
+$z-index-banner-content: -1;
+$z-index-volume-control-mobile: 6;
+$z-index-original-progress-bar: 7;
 
 :export {
   primaryColor: $color-primary;
@@ -41,6 +44,7 @@ $z-banner-content: -1;
   verifiedColor: $color-blue-verified;
   darkGrayColor: $color-dark-gray;
   darkMidGrayColor: $color-dark-mid-gray;
+  darkMidGrayColorTransparent: $color-dark-mid-gray-transparent;
   darkBlackColor: $color-dark-black;
   bodyBgDarkColor: $color-dark-body-background;
   fontGrayColor: $color-font-gray;
@@ -61,7 +65,9 @@ $z-banner-content: -1;
   cardBorderRadius: $card-border-radius;
 
   zIndexTopBar: $z-index-topbar;
-  zIndexBannerOverlay: $z-banner-overlay;
-  zIndexBannerBackground: $z-banner-background;
-  zIndexBannerContent: $z-banner-content;
+  zIndexBannerOverlay: $z-index-banner-overlay;
+  zIndexBannerBackground: $z-index-banner-background;
+  zIndexBannerContent: $z-index-banner-content;
+  zIndexVolumeControlMobile: $z-index-volume-control-mobile;
+  zIndexOriginalProgressBar: $z-index-original-progress-bar;
 }
