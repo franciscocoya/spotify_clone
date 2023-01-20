@@ -5,6 +5,7 @@ import {
 } from '@heroicons/react/24/solid';
 import variables from '@styles/variables.module.scss';
 import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 function UserDropdownMenu({ ...props }) {
@@ -127,9 +128,26 @@ function ToolbarNavigation() {
 }
 
 function BaseToolbar({ ...props }) {
+  const [pageWidth, setPageWidth] = useState(0);
+  const topbar = useRef();
+  useEffect(() => {
+    const showHeaderMobile = () => {
+      if (!topbar || typeof window === 'undefined') {
+        return;
+      }
+
+      window.addEventListener('resize', () => {
+        setPageWidth(window.innerWidth);
+        topbar.current.classList.toggle('topbar-mobile', pageWidth < 800);
+      });
+    };
+
+    showHeaderMobile();
+  }, [pageWidth]);
+
   return (
     <>
-      <header className="base-toolbar">
+      <header className="base-toolbar" id="base-toolbar__main" ref={topbar}>
         <ToolbarNavigation />
         <UserDropdownMenu
           username="Kiko Coya"
@@ -151,6 +169,10 @@ function BaseToolbar({ ...props }) {
             background-color: transparent;
             padding: 0 30px;
             z-index: ${variables.zIndexTopBar};
+          }
+
+          .topbar-mobile {
+            z-index: 0;
           }
         `}
       </style>
