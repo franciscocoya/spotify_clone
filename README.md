@@ -1,3 +1,7 @@
+# Spotify Clone using NextJS
+Spotify web player currently developed under React Framework. This streamming platform allows you to listen all music in the world and it also has lots of engineering behind it.
+
+
 ## Getting Started
 
 First, run the development server:
@@ -24,3 +28,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 One of the most important parts of the application. It has implemented as aesthetic and identical as posible.
 
 ![image](https://user-images.githubusercontent.com/56480356/212466286-a1259a21-1ca1-4e20-ad75-718eb4a7dd61.png)
+
+
+## Responsive Design
+To improve user experience, player and volume control are fully responsive. The next snapshot shows the artist page on tablet devices.
+
+<img src="https://user-images.githubusercontent.com/56480356/213693172-1c8e2830-777c-4b54-8438-9a8148c1d944.png" alt="App on tablet devices" width="400px" height="auto"/>
+
+
+
+*The original design and logo are the property of Spotify. The project is for personal and academic purposes only. [© 2023 Spotify AB](https://open.spotify.com/)*
