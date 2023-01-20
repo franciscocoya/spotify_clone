@@ -1,6 +1,5 @@
 import Controls from '@components/ButtonControls';
 import PlayerProgress from '@components/PlayerProgress';
-import { Howl } from 'howler';
 
 function Player({ ...props }) {
   return (

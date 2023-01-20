@@ -1,14 +1,17 @@
 import ProgressBar from '@components/ProgressBar';
 import useAudioPlayer from '@hooks/useAudioPlayer';
-import { useEffect, useRef } from 'react';
+import variables from '@styles/variables.module.scss';
+import { useEffect, useRef, useState } from 'react';
 import { SlVolume1, SlVolume2, SlVolumeOff } from 'react-icons/sl';
 
 function VolumeControl({ ...props }) {
+  const [pageWidth, setPageWidth] = useState(0);
   const { volume, setVolume, muteVolume, volumeCopy, resetVolume } =
     useAudioPlayer();
 
-  const volumeProgress = useRef(null);
-  const volumeIconRef = useRef(null);
+  const volumeControl = useRef(null); // Main content wrapper
+  const volumeProgress = useRef(null); // Progress bar
+  const volumeIconRef = useRef(null); // Volume dinamic icon
 
   const toogleMuteVolume = (e) => {
     e.preventDefault();
@@ -34,9 +37,42 @@ function VolumeControl({ ...props }) {
     volumeProgress.current.value = volume;
   }, [volume]);
 
+  const showVolumePopup = () => {
+    if (
+      !volumeControl ||
+      typeof window === 'undefined' ||
+      typeof document === 'undefined'
+    ) {
+      return;
+    }
+
+    setPageWidth(window.innerWidth);
+    volumeControl.current.classList.toggle('volume-mobile', pageWidth < 800);
+    pageWidth < 800
+      ? document
+          .getElementsByClassName('base-player-container')[0]
+          .classList.add('base-player-mobile')
+      : document
+          .getElementsByClassName('base-player-container')[0]
+          .classList.remove('base-player-mobile');
+  };
+
+  useEffect(() => {
+    const loadEvents = () => {
+      setPageWidth(1);
+      window.addEventListener('resize', showVolumePopup);
+      volumeControl.current.addEventListener('load', showVolumePopup);
+    };
+
+    loadEvents();
+  }, [pageWidth]);
+
   return (
     <>
-      <div className="volume-control-container">
+      <div
+        className={`volume-control-container volume-mobile`}
+        ref={volumeControl}
+      >
         <div ref={volumeIconRef}>{getVolumeIcon()}</div>
         <ProgressBar
           progressBarWidth="100px"
@@ -64,6 +100,32 @@ function VolumeControl({ ...props }) {
           justify-content: flex-start;
           align-items: center;
           gap: 10px;
+        }
+
+        .volume-mobile {
+          position: fixed;
+          right: 40px;
+          background-color: ${variables.blackColorTransparent};
+          backdrop-filter: blur(10px);
+          padding: 10px 20px;
+          border-radius: 50px;
+          transform: translateY(-87vh);
+          z-index: ${variables.zIndexVolumeControlMobile};
+          transition: all 165ms ease-in-out;
+          animation: fadeIn 2s;
+        }
+
+        .volume-mobile:hover {
+          background-color: ${variables.whiteColorTransparent};
+        }
+
+        @keyframes fadeIn {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
         }
       `}</style>
     </>
