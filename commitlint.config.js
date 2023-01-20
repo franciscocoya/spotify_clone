@@ -1,6 +1,7 @@
 // build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
 // ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
 // docs: Documentation only changes
+// enh: A code enhances the user interface or user experience
 // feat: A new feature
 // fix: A bug fix
 // perf: A code change that improves performance
@@ -35,6 +36,7 @@ module.exports = {
         'ci',
         'docs',
         'db',
+        'enh',
         'feat',
         'fix',
         'perf',
