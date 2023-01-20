@@ -18,7 +18,6 @@ export default function TextInput({ ...props }) {
       />
       <style jsx>
         {`
-
         label {
           color: ${variables.whiteColor}
           margin-bottom: 5px;
