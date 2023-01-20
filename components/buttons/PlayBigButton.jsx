@@ -4,7 +4,7 @@ import { IoPlaySharp } from 'react-icons/io5';
 function PlayBigButton({ ...props }) {
   return (
     <>
-      <button onClick={props.action || '#'}>
+      <button onClick={props.action || null}>
         <IoPlaySharp
           size={32}
           fill={variables.bodyBgDarkColor}
