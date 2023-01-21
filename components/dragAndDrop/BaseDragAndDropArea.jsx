@@ -1,60 +1,75 @@
-import variables from '@styles/variables.module.scss';
-import { useRef } from 'react';
+import PopupMessage from '@components/messages/PopupMessage';
+import {
+  primaryColorEmphasis,
+  primaryColorEmphasisTransparent,
+  whiteColor,
+} from '@styles/variables.module.scss';
+import { useEffect, useRef } from 'react';
+import { useIntl } from 'react-intl';
 
 function BaseDragAndDropArea({ ...props }) {
+  const intl = useIntl();
+
   const dragArea = useRef(null);
 
-  const drop = (e) => {
-    e.preventDefault();
-    var data = e.dataTransfer.getData('text');
-    e.target.appendChild(document.getElementById(data));
+  const highlight = () => {
+    dragArea.current.style.borderColor = whiteColor;
   };
 
-  const drag = (e) => {
-    e.dataTransfer.setData('text', e.target.id);
-    dragArea.current.style.borderColor = variables.primaryColorEmphasis;
+  const unhighlight = () => {
+    dragArea.current.style.borderColor = primaryColorEmphasis;
   };
 
-  const allowDrop = (e) => {
-    e.preventDefault();
-  };
+  useEffect(() => {
+    const attachEvents = () => {
+      ['dragleave', 'drop'].forEach((eventName) => {
+        dragArea.current.addEventListener(eventName, unhighlight, false);
+      });
 
-  const handleDragEnter = (e) => {
-    dragArea.current.style.borderColor = variables.whiteColor;
-  };
+      ['dragenter', 'dragover'].forEach((eventName) => {
+        dragArea.current.addEventListener(eventName, highlight, false);
+      });
+    };
 
-  const handleDragLeave = (e) => {
-    dragArea.current.style.borderColor = variables.primaryColorEmphasis;
-  };
+    attachEvents();
+  }, []);
 
   return (
     <>
-      <div
-        ref={dragArea}
-        className="drag-and-drop-area"
-        onDragEnter={handleDragEnter}
-        onDragLeave={handleDragLeave}
-        ondrop={drop}
-        ondragover={allowDrop}
-        ondragstart={drag}
-        draggable="true"
-      >
-        <span>
-          <label htmlFor="track-upload-cover">Click here</label>
-          or drag & drop jpeg, png, webp Maximum file size 5MB
-        </span>
-        <span className="track-upload-mimes-info">jpeg, png, webp</span>
-        <form action="#" onSubmit={null}>
+      <div className="drag-and-drop-area__wrapper">
+        <div
+          ref={dragArea}
+          className="drag-and-drop-area"
+          onDrop={props.drop}
+          onDragOver={props.allowDrop}
+          style={props.styles}
+        >
+          <span>
+            <label htmlFor={props.id}>
+              {intl.formatMessage({ id: 'components.buttons.clickHere' })}
+            </label>
+            {props.text}
+          </span>
+          <span className="track-upload-mimes-info">
+            {props.allowedFormats}
+          </span>
+          {/* <form action="#" onSubmit={null}> */}
           <input
             type="file"
-            name="track-upload-cover"
-            id="track-upload-cover"
-            accept="image/*"
+            name={props.name}
+            id={props.id}
+            accept={props.accept}
+            onChange={props.handleChange}
           />
-        </form>
+        </div>
+        {props.dropCompleted && (
+          <PopupMessage content={props.dropCompletedMessage} duration={3000} />
+        )}
       </div>
+
       <style jsx>{`
         .drag-and-drop-area {
+          position: relative;
           width: 350px;
           height: 300px;
           display: flex;
@@ -62,8 +77,8 @@ function BaseDragAndDropArea({ ...props }) {
           justify-content: center;
           text-align: center;
           align-items: center;
-          background-color: ${variables.primaryColorEmphasisTransparent};
-          border: 5px dashed ${variables.primaryColorEmphasis};
+          background-color: ${primaryColorEmphasisTransparent};
+          border: 5px dashed ${primaryColorEmphasis};
           border-radius: 20px;
           padding: 30px;
         }
@@ -71,12 +86,13 @@ function BaseDragAndDropArea({ ...props }) {
         .drag-and-drop-area > span:not(.track-upload-mimes-info),
         .drag-and-drop-area label {
           font-size: 1.2rem;
-          color: ${variables.primaryColorEmphasis};
+          color: ${primaryColorEmphasis};
         }
+
         .drag-and-drop-area label {
           text-decoration: underline;
           margin-right: 10px;
-          color: ${variables.whiteColor};
+          color: ${whiteColor};
           cursor: pointer;
         }
 
@@ -86,7 +102,7 @@ function BaseDragAndDropArea({ ...props }) {
 
         .track-upload-cover > .track-upload-mimes-info {
           font-size: 0.8rem;
-          color: ${variables.primaryColorEmphasis};
+          color: ${primaryColorEmphasis};
         }
       `}</style>
     </>
