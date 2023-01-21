@@ -15,6 +15,8 @@ export default function TextInput({ ...props }) {
         name={props.name}
         placeholder={props.placeholder}
         required={props.required ?? false}
+        onInput={props.handleInput}
+        maxLength={props.maxLength}
       />
       <style jsx>
         {`
