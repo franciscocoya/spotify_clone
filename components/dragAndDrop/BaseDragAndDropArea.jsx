@@ -62,9 +62,13 @@ function BaseDragAndDropArea({ ...props }) {
             onChange={props.handleChange}
           />
         </div>
-        {props.dropCompleted && (
-          <PopupMessage content={props.dropCompletedMessage} duration={3000} />
-        )}
+        {props.dropCompleted ||
+          (props.error && (
+            <PopupMessage
+              content={props.dropCompletedMessage}
+              duration={3000}
+            />
+          ))}
       </div>
 
       <style jsx>{`

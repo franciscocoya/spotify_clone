@@ -58,9 +58,7 @@ function VolumeControl({ ...props }) {
 
   useEffect(() => {
     const loadEvents = () => {
-      setPageWidth(1);
       window.addEventListener('resize', showVolumePopup);
-      volumeControl.current.addEventListener('load', showVolumePopup);
     };
 
     loadEvents();
@@ -68,10 +66,7 @@ function VolumeControl({ ...props }) {
 
   return (
     <>
-      <div
-        className={`volume-control-container volume-mobile`}
-        ref={volumeControl}
-      >
+      <div className={`volume-control-container`} ref={volumeControl}>
         <div ref={volumeIconRef}>{getVolumeIcon()}</div>
         <ProgressBar
           progressBarWidth="100px"
