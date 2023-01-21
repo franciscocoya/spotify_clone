@@ -7,6 +7,7 @@ function BaseForm({ children, ...props }) {
       method={props.method ?? 'POST'}
       className={styles.form}
       encType="multipart/form-data"
+      style={props?.style}
     >
       {children}
     </form>
