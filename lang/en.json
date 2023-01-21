@@ -31,6 +31,14 @@
   "page.upload.form.genre.placeholder": "Select a genre.",
   "page.upload.form.album": "Album",
   "page.upload.form.album.placeholder": "Select an album.",
+  "page.upload.form.explicit.yes": "Yes. it's explicit",
+  "page.upload.form.explicit.no": "No. it's no explicit",
+  "page.upload.form.explicit.label": "Track is explicit ?",
+  "page.upload.dragAndDrop.cover.text": "or drag & drop. Maximum file size 3MB. Recomended dimensions: 640 x 640px",
+  "page.upload.dragAndDrop.track.text": "or drag & drop. Maximum file size 5MB",
+  "page.upload.preview.title": "Track title",
+  "page.upload.preview.artist": "Artist",
+  "page.upload.preview.duration": "0:00",
 
   "components.buttons.login": "Log In",
   "components.buttons.signUp": "Sign Up",
@@ -39,6 +47,7 @@
   "components.buttons.showMore": "Show more",
   "components.buttons.showLess": "Show less",
   "components.buttons.uploadTrack": "Upload",
+  "components.buttons.clickHere": "Click here",
 
   "components.aside.home": "Home",
   "components.aside.search": "Search",
@@ -50,5 +59,11 @@
   "components.toptoolbar.arrow_forward": "Go forward",
   "components.toptoolbar.profileImage_alt": "Profile image of",
 
-  "components.player.song_details_posterAlt": "Poster of the song"
+  "components.player.song_details_posterAlt": "Poster of the song",
+
+  "components.dragAndDrop.area.delete.text": "Clear uploaded files",
+  "components.dragAndDrop.area.cover.message.complete": "Cover upload successfully",
+  "components.dragAndDrop.area.cover.message.error": "The file must be an image",
+  "components.dragAndDrop.area.track.message.complete": "Track upload successfully",
+  "components.dragAndDrop.area.track.message.error": "The file must be an audio"
 }
