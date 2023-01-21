@@ -16,6 +16,7 @@ $color-font-gray: #6a6a6a;
 $color-error: #e11414;
 $color-warning: #e1a014;
 $color-black-transparent: #000000b3;
+$color-popup-transparent: rgba(255, 255, 255, 0.061);
 
 /* Topbar */
 $topbar-height: 80px;
@@ -39,23 +40,24 @@ $z-index-volume-control-mobile: 6;
 $z-index-original-progress-bar: 7;
 
 :export {
-  primaryColor: $color-primary;
-  primaryColorEmphasis: $color-primary-emphasis;
-  primaryColorEmphasisTransparent: $color-primary-emphasis-transparent;
+  blackColorTransparent: $color-black-transparent;
   blueColor: $color-blue;
-  verifiedColor: $color-blue-verified;
+  bodyBgDarkColor: $color-dark-body-background;
+  darkBlackColor: $color-dark-black;
   darkGrayColor: $color-dark-gray;
   darkMidGrayColor: $color-dark-mid-gray;
   darkMidGrayColorTransparent: $color-dark-mid-gray-transparent;
-  darkBlackColor: $color-dark-black;
-  bodyBgDarkColor: $color-dark-body-background;
+  errorColor: $color-error;
   fontGrayColor: $color-font-gray;
+  popupColorTransparent: $color-popup-transparent;
+  primaryColor: $color-primary;
+  primaryColorEmphasis: $color-primary-emphasis;
+  primaryColorEmphasisTransparent: $color-primary-emphasis-transparent;
+  linkNotActiveColor: $color-link-not-active;
+  verifiedColor: $color-blue-verified;
+  warningColor: $color-warning;
   whiteColor: $color-white;
   whiteColorTransparent: $color-white-transparent;
-  linkNotActiveColor: $color-link-not-active;
-  errorColor: $color-error;
-  warningColor: $color-warning;
-  blackColorTransparent: $color-black-transparent;
 
   topbarHeight: $topbar-height;
 
