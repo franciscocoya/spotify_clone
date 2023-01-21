@@ -10,20 +10,9 @@ const nextConfig = {
   reactStrictMode: true,
   api: {
     externalResolver: true,
+    bodyParser: false,
   },
   webpack(config) {
-    // if (isServer) {
-    //   config.externals.unshift(({ context, request }, callback) => {
-    //     if (request === 'prisma/client') {
-    //       return callback(null, `commonjs ${prismaClientPath}`);
-    //     }
-    //     if (request === './runtime' && context === prismaClientPath) {
-    //       return callback(null, `commonjs ${prismaClientPath}/runtime`);
-    //     }
-    //     callback();
-    //   });
-    // }
-
     config.module.rules.push({
       test: /\.svg$/,
       use: ['@svgr/webpack'],
