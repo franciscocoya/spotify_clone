@@ -10,7 +10,9 @@ const nextConfig = {
   reactStrictMode: true,
   api: {
     externalResolver: true,
-    bodyParser: false,
+    bodyParser: {
+      responseLimit: false,
+    },
   },
   webpack(config) {
     config.module.rules.push({
