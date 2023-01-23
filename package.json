@@ -35,7 +35,7 @@
     "react-intl": "^6.2.5",
     "recoil": "^0.7.6",
     "sass": "^1.57.1",
-    "swr": "^2.0.0",
+    "swr": "^2.0.1",
     "values.js": "^2.1.1"
   },
   "devDependencies": {
