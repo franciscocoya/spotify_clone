@@ -3,7 +3,7 @@ import {
   darkGrayColor,
   whiteColor,
 } from '@styles/variables.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import styles from './BaseComboBox.module.scss';
 
@@ -14,7 +14,6 @@ function BaseComboBox({ ...props }) {
   const selectRef = useRef(null);
 
   const groupData = () => {
-    let result = '';
     if (!props.options || typeof document === 'undefined') {
       return;
     }
@@ -46,16 +45,6 @@ function BaseComboBox({ ...props }) {
     setIsSelected(!isSelected);
   };
 
-  useEffect(() => {
-    const load = () => {
-      if (!props.isGrouped) {
-        return;
-      }
-      groupData();
-    };
-    load();
-  }, [props?.options]);
-
   return (
     <>
       {loadingData ? (
@@ -76,6 +65,11 @@ function BaseComboBox({ ...props }) {
                 {props.placeholder}
               </option>
             </select>
+            {/* {{
+              props.options && Object.entries(props.options).map(opt => {
+                <p>{opt}</p>
+              }) 
+            } */}
             {isSelected ? (
               <SlArrowUp size={16} className={styles.selectIcon} />
             ) : (
