@@ -21,7 +21,7 @@
     "compressorjs": "^1.1.1",
     "eslint": "8.32.0",
     "eslint-config-next": "13.1.2",
-    "firebase": "^9.15.0",
+    "firebase": "^9.16.0",
     "heroicons": "^2.0.13",
     "howler": "^2.2.3",
     "mapbox": "^1.0.0-beta10",
