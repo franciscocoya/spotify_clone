@@ -29,6 +29,15 @@ One of the most important parts of the application. It has implemented as aesthe
 
 ![image](https://user-images.githubusercontent.com/56480356/212466286-a1259a21-1ca1-4e20-ad75-718eb4a7dd61.png)
 
+### Autocomplete text input for music genres
+
+This component reads all music genres from a JSON file using the getStaticProps (NextJS) function. To increase usability, a suggestion counter and a delete button have been created. The design is our own. 
+
+<img src="https://user-images.githubusercontent.com/56480356/214149011-e6192977-9d41-492e-918e-00205d4aa68a.png" alt="Autocomplete music genres text input" width="400px" height="auto" />
+
+![image](https://user-images.githubusercontent.com/56480356/214149659-cef80949-8d79-4af6-b80e-a8f9314fb235.png)
+
+
 ## Responsive Design
 
 To improve user experience, player and volume control are fully responsive. The next snapshot shows the artist page on tablet devices.
@@ -41,7 +50,8 @@ To improve user experience, player and volume control are fully responsive. The 
 
 Available for artist role only.
 
-<img src="https://user-images.githubusercontent.com/56480356/213885014-13269afd-5613-4e41-820f-e87f430ad111.png" alt="Upload a track page snapshot" width="90%" height="auto"/>
+<img src="https://user-images.githubusercontent.com/56480356/214150052-136b2442-95a5-4aa1-8002-ab1a14f1b8d9.png" alt="Upload a track page snapshot" width="90%" height="auto"/>
+
 
 <br />
 
