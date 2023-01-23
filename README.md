@@ -38,6 +38,7 @@ To improve user experience, player and volume control are fully responsive. The 
 ## Pages
 
 ### Upload a track
+
 Available for artist role only.
 
 <img src="https://user-images.githubusercontent.com/56480356/213885014-13269afd-5613-4e41-820f-e87f430ad111.png" alt="Upload a track page snapshot" width="90%" height="auto"/>
