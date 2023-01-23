@@ -2,11 +2,14 @@ import {
   coverToUploadDetailsState,
   selectedMusicGenreState,
   selectedTrackIsExplicit,
+  trackBlobDataState,
   trackToUploadDetailsState,
   trackUploadTitlePreviewState,
 } from '@atoms/uploadTrackAtom';
+import { uploadTrackRoute } from '@lib/apiRoutes';
 import { checkIsAudioFile } from '@utils/audioUtil';
 import { checkIsImageFile, compressImage } from '@utils/imageUtil';
+import axios from 'axios';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 
@@ -26,6 +29,9 @@ function useUploadTrack() {
     trackToUploadDetailsState
   );
 
+  // Track blob
+  const [trackBlobData, setTrackBlobData] = useRecoilState(trackBlobDataState);
+
   // Track genre
   const [selectedGenre, setSelectedGenre] = useRecoilState(
     selectedMusicGenreState
@@ -40,6 +46,11 @@ function useUploadTrack() {
 
   const [coverUploadError, setCoverUploadError] = useState(false);
   const [trackUploadError, setTrackUploadError] = useState(false);
+
+  const [isUploading, setIsUploading] = useState({
+    loading: false,
+    finished: false,
+  });
 
   // reset all track states
   const resetAudioStates = () => {
@@ -80,6 +91,7 @@ function useUploadTrack() {
       return;
     }
 
+    setTrackBlobData(data);
     changeUploadTrackFile(data);
     setTrackUploadCompleted(true);
   };
@@ -127,6 +139,7 @@ function useUploadTrack() {
       return;
     }
 
+    setTrackBlobData(file);
     changeUploadTrackFile(file);
     setTrackUploadCompleted(true);
   };
@@ -149,11 +162,11 @@ function useUploadTrack() {
   };
 
   // Handle the selected music genre.
-  const handleSelectGenre = (e) => {
-    if (!e.target.value) {
+  const handleSelectGenre = (value) => {
+    if (!value) {
       return;
     }
-    setSelectedGenre(e.target.value);
+    setSelectedGenre(value);
   };
 
   // Handle the selected value from explicit content radio buttons.
@@ -161,18 +174,40 @@ function useUploadTrack() {
     setIsExplicit(isExplicit);
   };
 
-  // Upload files to upload.
-  const handleUpload = (e) => {
+  // Handle the files upload.
+  const handleUpload = async (e) => {
     e.preventDefault();
-    console.log(
-      selectedCover,
-      trackTitle,
-      trackToUpload,
-      selectedGenre,
-      isExplicit,
-      coverUploadError,
-      trackUploadError
-    );
+
+    setIsUploading({
+      loading: true,
+      finished: false,
+    });
+
+    if (!trackToUpload || !trackTitle) {
+      return;
+    }
+
+    const data = new FormData();
+    data.append('track', trackBlobData);
+    data.append('cover', trackBlobData);
+    data.append('title', trackTitle);
+    data.append('genre', selectedGenre);
+    data.append('explicit', isExplicit);
+
+    await axios
+      .post(uploadTrackRoute, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => {
+        if (res) {
+          setIsUploading({
+            loading: false,
+            finished: true,
+          });
+        }
+      });
   };
 
   return {
@@ -192,6 +227,7 @@ function useUploadTrack() {
     coverUploadCompleted,
     trackUploadError,
     coverUploadError,
+    isUploading,
   };
 }
 
