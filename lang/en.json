@@ -28,7 +28,7 @@
   "page.upload.form.title": "Title",
   "page.upload.form.title.placeholder": "Enter the track title.",
   "page.upload.form.genre": "Genre",
-  "page.upload.form.genre.placeholder": "Select a genre.",
+  "page.upload.form.genre.placeholder": "Type a music genre.",
   "page.upload.form.album": "Album",
   "page.upload.form.album.placeholder": "Select an album.",
   "page.upload.form.explicit.yes": "Yes. it's explicit",
@@ -65,5 +65,9 @@
   "components.dragAndDrop.area.cover.message.complete": "Cover upload successfully",
   "components.dragAndDrop.area.cover.message.error": "The file must be an image",
   "components.dragAndDrop.area.track.message.complete": "Track upload successfully",
-  "components.dragAndDrop.area.track.message.error": "The file must be an audio"
+  "components.dragAndDrop.area.track.message.error": "The file must be an audio",
+
+  "components.messages.loading.upload.track": "Track is being uploaded... please do not close this tab.",
+  "components.messages.success.upload.track": "🎉 Track upload successfully",
+  "components.messages.error.upload.track": "🎉 Track upload successfully"
 }
