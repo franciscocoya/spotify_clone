@@ -6,6 +6,12 @@ const trackToUploadDetailsState = atom({
   default: null,
 });
 
+/* Track to upload (blob) */
+const trackBlobDataState = atom({
+  key: 'trackBlobDataState',
+  default: null,
+});
+
 /* Represents the cover of the track to upload */
 const coverToUploadDetailsState = atom({
   key: 'coverToUploadDetailsState',
@@ -36,4 +42,5 @@ export {
   trackUploadTitlePreviewState,
   selectedMusicGenreState,
   selectedTrackIsExplicit,
+  trackBlobDataState,
 };
