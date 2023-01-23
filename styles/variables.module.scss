@@ -1,6 +1,6 @@
 /* Color palette */
 $color-white: #f5f4f4;
-$color-white-transparent: rgba(255, 255, 255, 0.309);
+$color-white-transparent: #ffffff4f;
 $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
@@ -17,6 +17,8 @@ $color-error: #e11414;
 $color-warning: #e1a014;
 $color-black-transparent: #000000b3;
 $color-popup-transparent: rgba(255, 255, 255, 0.061);
+$color-primary-comp-separation: #d65313;
+$color-primary-comp-separation-transparent: rgba(214, 84, 19, 0.678);
 
 /* Topbar */
 $topbar-height: 80px;
@@ -58,6 +60,8 @@ $z-index-original-progress-bar: 7;
   warningColor: $color-warning;
   whiteColor: $color-white;
   whiteColorTransparent: $color-white-transparent;
+  primaryColorCompSeparation: $color-primary-comp-separation;
+  primaryColorCompSeparationTransparent: $color-primary-comp-separation-transparent;
 
   topbarHeight: $topbar-height;
 
