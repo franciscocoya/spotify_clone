@@ -13,15 +13,25 @@ function BasePlayer({ ...props }) {
       </div>
       <style jsx>{`
           .base-player-container{
-            grid-area: playing-bar;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
             height: 100px;
+            grid-area: playing-bar;
             display: flex;
             flex-direction: row,
             justify-content: space-between;
             align-items: center;
             gap: 10px;
-            background-color: ${variables.darkMidGrayColor};
+            background-color: ${variables.darkMidGrayColorTransparent};
+            backdrop-filter: blur(6px);
+            border-top: 1px solid ${variables.darkGrayColor};
             padding: 0 20px;
+          }
+
+          .base-player-mobile{
+            max-width: minmax(676px, 800px);
           }
       `}</style>
     </>
