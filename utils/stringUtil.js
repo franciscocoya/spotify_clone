@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /**
  * Transform a durations in seconds into the following format: mm:ss
 
@@ -21,4 +23,14 @@ const prettyDuration = (duration) => {
   return `${formattedMinutes}:${formattedSeconds}`;
 };
 
-export { prettyDuration };
+const convertToRelativeDate = (date) => {
+  //2023-01-18T16:05:56.041Z
+  if (!date) {
+    return;
+  }
+  const datePart1 = date.toString().split('T')[0];
+  const datePart2 = date.toString().split('T')[1];
+  return moment(`${datePart1} ${datePart2}`, 'YYYY-MM-DD h:mm:ss').fromNow();
+};
+
+export { prettyDuration, convertToRelativeDate };

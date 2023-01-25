@@ -1,17 +1,27 @@
 /* Color palette */
 $color-white: #f5f4f4;
+$color-white-transparent: #ffffff4f;
 $color-link-not-active: #b3b3b3;
 $color-primary: #169b45;
 $color-primary-emphasis: #1ed760;
+$color-primary-emphasis-transparent: rgba(30, 215, 95, 0.15);
 $color-blue: #1877f2;
+$color-blue-verified: #3d91f4;
 $color-dark-gray: #333333;
 $color-dark-mid-gray: #181818;
+$color-dark-mid-gray-transparent: #181818ed;
 $color-dark-black: #000000;
 $color-dark-body-background: #121212;
 $color-font-gray: #6a6a6a;
 $color-error: #e11414;
 $color-warning: #e1a014;
 $color-black-transparent: #000000b3;
+$color-popup-transparent: rgba(255, 255, 255, 0.061);
+$color-primary-comp-separation: #d65313;
+$color-primary-comp-separation-transparent: rgba(214, 84, 19, 0.678);
+
+/* Topbar */
+$topbar-height: 80px;
 
 /* sidebar */
 $sidebar-padding-left: 24px;
@@ -23,20 +33,37 @@ $main-gradient-noise: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d
 /* Cards */
 $card-border-radius: 8px;
 
+/* Layers */
+$z-index-topbar: 5;
+$z-index-banner-overlay: 2;
+$z-index-banner-background: 1;
+$z-index-banner-content: -1;
+$z-index-volume-control-mobile: 6;
+$z-index-original-progress-bar: 7;
+
 :export {
-  primaryColor: $color-primary;
-  primaryColorEmphasis: $color-primary-emphasis;
+  blackColorTransparent: $color-black-transparent;
   blueColor: $color-blue;
+  bodyBgDarkColor: $color-dark-body-background;
+  darkBlackColor: $color-dark-black;
   darkGrayColor: $color-dark-gray;
   darkMidGrayColor: $color-dark-mid-gray;
-  darkBlackColor: $color-dark-black;
-  bodyBgDarkColor: $color-dark-body-background;
-  fontGrayColor: $color-font-gray;
-  whiteColor: $color-white;
-  linkNotActiveColor: $color-link-not-active;
+  darkMidGrayColorTransparent: $color-dark-mid-gray-transparent;
   errorColor: $color-error;
+  fontGrayColor: $color-font-gray;
+  popupColorTransparent: $color-popup-transparent;
+  primaryColor: $color-primary;
+  primaryColorEmphasis: $color-primary-emphasis;
+  primaryColorEmphasisTransparent: $color-primary-emphasis-transparent;
+  linkNotActiveColor: $color-link-not-active;
+  verifiedColor: $color-blue-verified;
   warningColor: $color-warning;
-  blackColorTransparent: $color-black-transparent;
+  whiteColor: $color-white;
+  whiteColorTransparent: $color-white-transparent;
+  primaryColorCompSeparation: $color-primary-comp-separation;
+  primaryColorCompSeparationTransparent: $color-primary-comp-separation-transparent;
+
+  topbarHeight: $topbar-height;
 
   sidebarPaddingLeft: $sidebar-padding-left;
   sidebarPaddingRight: $sidebar-padding-right;
@@ -44,4 +71,11 @@ $card-border-radius: 8px;
   gradientNoise: $main-gradient-noise;
 
   cardBorderRadius: $card-border-radius;
+
+  zIndexTopBar: $z-index-topbar;
+  zIndexBannerOverlay: $z-index-banner-overlay;
+  zIndexBannerBackground: $z-index-banner-background;
+  zIndexBannerContent: $z-index-banner-content;
+  zIndexVolumeControlMobile: $z-index-volume-control-mobile;
+  zIndexOriginalProgressBar: $z-index-original-progress-bar;
 }

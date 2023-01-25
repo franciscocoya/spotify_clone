@@ -1,4 +1,4 @@
-import variables from '@styles/variables.module.scss';
+import { darkGrayColor, whiteColor } from '@styles/variables.module.scss';
 import styles from './TextInput.module.scss';
 
 export default function TextInput({ ...props }) {
@@ -15,12 +15,13 @@ export default function TextInput({ ...props }) {
         name={props.name}
         placeholder={props.placeholder}
         required={props.required ?? false}
+        onInput={props.handleInput}
+        maxLength={props.maxLength}
       />
       <style jsx>
         {`
-
         label {
-          color: ${variables.whiteColor}
+          color: ${whiteColor}
           margin-bottom: 5px;
         }
 
@@ -30,7 +31,7 @@ export default function TextInput({ ...props }) {
           border: none;
           border-radius: 4px;
           padding: 14px;
-          box-shadow: inset 0 0 0 1px ${variables.darkGrayColor};
+          box-shadow: inset 0 0 0 1px ${darkGrayColor};
         }
       `}
       </style>

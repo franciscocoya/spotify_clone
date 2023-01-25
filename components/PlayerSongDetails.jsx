@@ -85,6 +85,12 @@ function PlayerSongDetails({ poster, title, author, isLiked }) {
           align-items: flex-start;
           gap: 1px;
         }
+
+        @media (max-width: 1055px) {
+          .player--song-details {
+            display: none;
+          }
+        }
       `}</style>
     </>
   );

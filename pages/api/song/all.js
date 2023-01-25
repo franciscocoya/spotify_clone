@@ -1,28 +1,51 @@
-import { ref, songRef, storage } from '@lib/firebaseConfig';
-import { getDownloadURL, list } from 'firebase/storage';
+import { ref, storage } from '@lib/firebaseConfig';
+import { PrismaClient } from '@prisma/client';
+import { getDownloadURL } from 'firebase/storage';
+const prisma = new PrismaClient();
 
 const handler = async (req, res) => {
-  let songs = [];
-  await list(songRef, { maxResults: 10 })
-    .then((result) => {
-      result.items.forEach(async (song) => {
-        await getSongData(song.fullPath).then((url) => {
-          songs.push(url);
-          if (songs.length === result.items.length) {
-            res.status(201).json({
-              songs,
-            });
-          }
+  const { limit } = req.query;
+  try {
+    await prisma.track
+      .findMany({
+        include: {
+          album: {
+            select: {
+              id: true,
+              name: true,
+            },
+          },
+          performedBy: {
+            select: {
+              artistId: true,
+            },
+          },
+        },
+        take: Number(limit) || 10,
+      })
+      .then(async (result) => {
+        if (res.status === 500) {
+          res.status(500).json({
+            msg: `Internal server error`,
+          });
+        }
+
+        if (!result) {
+          res.status(404).json({
+            msg: `The are no tracks`,
+          });
+        }
+
+        res.status(201).json({
+          tracks: result,
         });
+      })
+      .catch((err) => {
+        console.error(`An error ocurred listing all songs. ${err}`);
       });
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(404).json({
-        msg: err,
-      });
-      res.end();
-    });
+  } catch (error) {
+    console.error(`An unexpected error ocurred during execution. ${error}`);
+  }
 };
 
 const getSongData = async (path) => {

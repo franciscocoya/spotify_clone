@@ -5,6 +5,7 @@ import {
 } from '@heroicons/react/24/solid';
 import variables from '@styles/variables.module.scss';
 import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';
 
 function UserDropdownMenu({ ...props }) {
@@ -127,27 +128,51 @@ function ToolbarNavigation() {
 }
 
 function BaseToolbar({ ...props }) {
+  const [pageWidth, setPageWidth] = useState(0);
+  const topbar = useRef();
+  useEffect(() => {
+    const showHeaderMobile = () => {
+      if (!topbar || typeof window === 'undefined') {
+        return;
+      }
+
+      window.addEventListener('resize', () => {
+        setPageWidth(window.innerWidth);
+        topbar.current.classList.toggle('topbar-mobile', pageWidth < 800);
+      });
+    };
+
+    showHeaderMobile();
+  }, [pageWidth]);
+
   return (
     <>
-      <div className="base-toolbar">
+      <header className="base-toolbar" id="base-toolbar__main" ref={topbar}>
         <ToolbarNavigation />
         <UserDropdownMenu
           username="Kiko Coya"
           profileImage="https://i.scdn.co/image/ab6775700000ee85c1ac01a593871a43a801d95c"
         />
-      </div>
+      </header>
       <style jsx>
         {`
           .base-toolbar {
+            position: sticky;
+            top: 0;
             grid-area: top-toolbar;
             width: 100%;
-            height: 80px;
+            height: ${variables.topbarHeight};
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
             background-color: transparent;
             padding: 0 30px;
+            z-index: ${variables.zIndexTopBar};
+          }
+
+          .topbar-mobile {
+            z-index: 0;
           }
         `}
       </style>
