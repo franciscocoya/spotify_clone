@@ -4,8 +4,12 @@ import { hideProgressIcons } from '@vendor/slider';
 function ProgressBar({ ...props }) {
   return (
     <>
-      <div style={{ position: 'relative' }}>
-        <div className="player-pseudo-progress-bar">
+      <div
+        style={{
+          position: 'relative',
+        }}
+      >
+        <div className={`player-pseudo-progress-bar`}>
           <div
             className="progress-bar-bg__elapsed"
             id={props.progressElapsedId}
@@ -118,7 +122,7 @@ function ProgressBar({ ...props }) {
           top: 0;
           width: ${props.progressBarWidth};
           opacity: 0;
-          z-index: 2;
+          z-index: ${variables.zIndexOriginalProgressBar};
           transition: opacity 0.1s 0s linear;
         }
 

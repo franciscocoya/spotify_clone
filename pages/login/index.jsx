@@ -3,37 +3,33 @@ import BaseButton from '@components/buttons/BaseButton';
 import BaseForm from '@components/Forms/BaseForm/BaseForm';
 import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
-import handle from '@lib/errorHandler';
+import { AuthContext } from '@context/authContext';
+import { login } from '@lib/auth';
 import variables from '@styles/variables.module.scss';
-import axios from 'axios';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useIntl } from 'react-intl';
 import styles from './Login.module.scss';
 
 function Login() {
   const [error, setError] = useState(null);
-
   const router = useRouter();
   const intl = useIntl();
+  const authContext = useContext(AuthContext);
 
   const signIn = async (e) => {
     e.preventDefault();
-
-    await axios
-      .post('/api/auth/login', {
-        email: e.target.email.value,
-        password: e.target.password.value,
-      })
-      .then((res) => {
-        router.push('/');
-      })
-      .catch((err) => {
-        handle(err, (st, msg) => {
-          setError(msg);
-        });
-      });
+    await login(
+      e.target.email.value,
+      e.target.password.value,
+      (data, isLogged) => {
+        if (data && isLogged) {
+          authContext.setToken(crypto.randomUUID());
+          router.push('/');
+        }
+      }
+    );
   };
 
   return (
