@@ -1,7 +1,7 @@
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
-  ChevronRightIcon,
+  ChevronRightIcon
 } from '@heroicons/react/24/solid';
 import variables from '@styles/variables.module.scss';
 import { useRouter } from 'next/router';
@@ -157,10 +157,11 @@ function BaseToolbar({ ...props }) {
       <style jsx>
         {`
           .base-toolbar {
-            position: sticky;
-            top: 0;
             grid-area: top-toolbar;
             width: 100%;
+            height: 80px;
+            position: sticky;
+            top: 0;
             height: ${variables.topbarHeight};
             display: flex;
             flex-direction: row;
