@@ -23,6 +23,20 @@
   "page.artist.tracks.title": "Songs",
   "page.artist.tracks.empty": "There are not songs",
 
+  "page.artist.createAccount.title": "Join to the artist community",
+  "page.artist.createAccount.name": "Name",
+  "page.artist.createAccount.name_placeholder": "Enter your artist / band name.",
+  "page.artist.createAccount.email": "What's your email?",
+  "page.artist.createAccount.email_placeholder": "Enter you email.",
+  "page.artist.createAccount.password": "Create a password",
+  "page.artist.createAccount.password_placeholder": "Create a password at least 6 characters.",
+  "page.artist.createAccount.passwordConfirmation": "Confirm your password",
+  "page.artist.createAccount.passwordConfirmation_placeholder": "Re-enter your password.",
+  "page.artist.createAccount.biography": "Biography",
+  "page.artist.createAccount.biography_placeholder": "Tell us more about you.",
+  "page.artist.createAccount.banner.dragAndDrop.title": "Artist page banner",
+  "page.artist.createAccount.banner.dragAndDrop.info": "or drag & drop. Maximum file size 3MB. Recomended dimensions: 1900 x 500px",
+
   "page.upload.metadata.title": "Upload new track · Spotify Clone",
   "page.upload.title": "Upload new track",
   "page.upload.form.title": "Title",
@@ -69,5 +83,7 @@
 
   "components.messages.loading.upload.track": "Track is being uploaded... please do not close this tab.",
   "components.messages.success.upload.track": "🎉 Track upload successfully",
-  "components.messages.error.upload.track": "🎉 Track upload successfully"
+  "components.messages.error.upload.track": "An error ocurred during the proccess. Please, try again later",
+
+  "components.messages.form.error.empty": "This field is required"
 }
