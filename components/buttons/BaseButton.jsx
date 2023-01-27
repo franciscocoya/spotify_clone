@@ -1,13 +1,18 @@
-import variables from '@styles/variables.module.scss';
+import LoadingIcon from '@images/three-dots-animated.svg';
+import {
+  darkBlackColor,
+  primaryColor,
+  whiteColor,
+} from '@styles/variables.module.scss';
 import { generateColorShades, getContrastColor } from '@utils/colorUtil';
 
-let textColor = variables.primaryColor;
+let textColor = primaryColor;
 
 export default function Button({ ...props }) {
   if (props.style === 'solid') {
     textColor = getContrastColor(props.color);
   } else if (props.style === 'text') {
-    textColor = variables.primaryColor;
+    textColor = primaryColor;
   } else if (props.style === 'outlined') {
     textColor = props.color;
   }
@@ -21,7 +26,17 @@ export default function Button({ ...props }) {
   return (
     <>
       <button type={props.type ?? 'button'} onClick={props.action}>
-        <div className="button-content">{props.text}</div>
+        <div className="button-content">
+          {props.isLoading && (
+            <LoadingIcon
+              width={32}
+              height={32}
+              fill={darkBlackColor}
+              viewBox="0 0 120 30"
+            />
+          )}
+          {props.text}
+        </div>
         <div className="button-focus"></div>
       </button>
       <style jsx>{`
@@ -52,13 +67,21 @@ export default function Button({ ...props }) {
           top: -6px;
           left: -6px;
           border-radius: 100px;
-          border: 3px solid ${variables.whiteColor};
+          border: 3px solid ${whiteColor};
           display: none;
           transition: border-color 200ms ease-in 0s;
         }
 
         button:focus .button-focus {
           display: block;
+        }
+
+        .button-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
         }
       `}</style>
     </>
