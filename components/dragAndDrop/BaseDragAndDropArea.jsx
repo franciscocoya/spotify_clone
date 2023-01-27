@@ -2,7 +2,7 @@ import PopupMessage from '@components/messages/PopupMessage';
 import {
   primaryColorEmphasis,
   primaryColorEmphasisTransparent,
-  whiteColor,
+  whiteColor
 } from '@styles/variables.module.scss';
 import { useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
@@ -85,6 +85,7 @@ function BaseDragAndDropArea({ ...props }) {
           border: 5px dashed ${primaryColorEmphasis};
           border-radius: 20px;
           padding: 30px;
+          backdrop-filter: blur(10px);
         }
 
         .drag-and-drop-area > span:not(.track-upload-mimes-info),
@@ -100,7 +101,7 @@ function BaseDragAndDropArea({ ...props }) {
           cursor: pointer;
         }
 
-        #track-upload-cover {
+        #${props.id} {
           display: none;
         }
 
