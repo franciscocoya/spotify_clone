@@ -2,4 +2,6 @@
 
 .inputWrapper {
   @include mixins.flex('vertical');
+  width: 100%;
+  position: relative;
 }
