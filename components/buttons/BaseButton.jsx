@@ -25,7 +25,11 @@ export default function Button({ ...props }) {
 
   return (
     <>
-      <button type={props.type ?? 'button'} onClick={props.action}>
+      <button
+        type={props.type ?? 'button'}
+        onClick={props.action}
+        disabled={props.isLoading}
+      >
         <div className="button-content">
           {props.isLoading && (
             <LoadingIcon
