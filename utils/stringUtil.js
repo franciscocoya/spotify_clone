@@ -23,6 +23,24 @@ const prettyDuration = (duration) => {
   return `${formattedMinutes}:${formattedSeconds}`;
 };
 
+/**
+ * Format bytes size as __KB (eg. 14951 bytes = 14.6KB)
+ * @param {*} bytes
+ * @param {*} decimal
+ * @returns
+ */
+const prettySize = (bytes, decimals = 2) => {
+  if (!+bytes) return '0 Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+};
+
 const convertToRelativeDate = (date) => {
   //2023-01-18T16:05:56.041Z
   if (!date) {
@@ -33,4 +51,4 @@ const convertToRelativeDate = (date) => {
   return moment(`${datePart1} ${datePart2}`, 'YYYY-MM-DD h:mm:ss').fromNow();
 };
 
-export { prettyDuration, convertToRelativeDate };
+export { prettyDuration, convertToRelativeDate, prettySize };
