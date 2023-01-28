@@ -2,7 +2,7 @@ import LoadingIcon from '@images/three-dots-animated.svg';
 import {
   darkBlackColor,
   primaryColor,
-  whiteColor,
+  whiteColor
 } from '@styles/variables.module.scss';
 import { generateColorShades, getContrastColor } from '@utils/colorUtil';
 
@@ -46,17 +46,18 @@ export default function Button({ ...props }) {
       <style jsx>{`
         button {
           background-color: ${props.style === 'solid'
-            ? props.color
-            : 'transparent'};
+          ? props.color
+          : 'transparent'};
           padding: 14px 32px;
           border: ${props.style === 'outlined'
-            ? '2px solid ' + props.color
-            : 0};
+          ? '2px solid ' + props.color
+          : 0};
           border-radius: ${props.rounded ? '100px' : props.borderRadius};
           color: ${textColor};
           text-transform: uppercase;
           outline: none;
           position: relative;
+          cursor: ${props.isLoading ? 'not-allowed' : 'default'};
         }
 
         button:hover {
