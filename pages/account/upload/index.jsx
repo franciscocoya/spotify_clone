@@ -84,11 +84,11 @@ function UploadTrackPage({ ...props }) {
                 dropCompletedMessage={
                   coverUploadError
                     ? intl.formatMessage({
-                      id: 'components.dragAndDrop.area.cover.message.error',
-                    })
+                        id: 'components.dragAndDrop.area.cover.message.error',
+                      })
                     : intl.formatMessage({
-                      id: 'components.dragAndDrop.area.cover.message.complete',
-                    })
+                        id: 'components.dragAndDrop.area.cover.message.complete',
+                      })
                 }
               />
             </div>
@@ -187,11 +187,11 @@ function UploadTrackPage({ ...props }) {
                 dropCompletedMessage={
                   trackUploadError
                     ? intl.formatMessage({
-                      id: 'components.dragAndDrop.area.track.message.error',
-                    })
+                        id: 'components.dragAndDrop.area.track.message.error',
+                      })
                     : intl.formatMessage({
-                      id: 'components.dragAndDrop.area.track.message.complete',
-                    })
+                        id: 'components.dragAndDrop.area.track.message.complete',
+                      })
                 }
               />
 
@@ -289,8 +289,8 @@ function UploadTrackPage({ ...props }) {
           z-index: -1;
         }
 
-        @media only screen and(max-width: 768px){
-          .upload-container__wrapper{
+        @media only screen and(max-width: 768px) {
+          .upload-container__wrapper {
             justify-content: center;
             gap: 50px;
           }

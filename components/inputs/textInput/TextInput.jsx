@@ -1,10 +1,12 @@
 import {
   darkGrayColor,
+  errorColor,
   whiteColor,
   whiteColorTransparent,
 } from '@styles/variables.module.scss';
 import { useState } from 'react';
 import { IoEyeOffSharp, IoEyeSharp } from 'react-icons/io5';
+import { RiErrorWarningLine } from 'react-icons/ri';
 import styles from './TextInput.module.scss';
 
 export default function TextInput({ ...props }) {
@@ -39,6 +41,7 @@ export default function TextInput({ ...props }) {
             )}
           </div>
         )}
+
         <input
           autoCapitalize="false"
           autoFocus={props.autoFocus ?? false}
@@ -51,6 +54,12 @@ export default function TextInput({ ...props }) {
           maxLength={props.maxLength}
           style={props.styles}
         />
+        {props.errorMessage && (
+          <span aria-hidden="true" role="alert" className="textinput-error-msg">
+            <RiErrorWarningLine size={16} fill={errorColor} />
+            {props.errorMessage}
+          </span>
+        )}
       </div>
       <style jsx>
         {`
@@ -67,7 +76,7 @@ export default function TextInput({ ...props }) {
           width: 100%;
           font-size: 1rem;
           background: transparent;
-          border: none;
+          border: ${props.errorMessage ? `1px solid ${errorColor}` : 'none'};
           border-radius: 4px;
           padding: 14px;
           box-shadow: inset 0 0 0 1px ${darkGrayColor};
@@ -75,7 +84,7 @@ export default function TextInput({ ...props }) {
 
         .password-visibility-container{
           position: absolute;
-          top: 50%;
+          top: ${props.errorMessage ? 'calc(50% - 12px)' : '50%'};
           right: 10px;
           display: flex;
           flex-direction: row;
@@ -83,8 +92,24 @@ export default function TextInput({ ...props }) {
           align-items: center;
         }
 
+        .textinput-error-msg{
+          position: static;
+          font-size: 0.9rem;
+          font-weight: 500;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: flex-start;
+          align-items: center;
+          gap: 5px;
+          color: ${errorColor};
+          margin-top: 3px;
+        }
+
         .light-appereance{
-          border: 1px solid ${whiteColor};
+          border: ${props.errorMessage ? '2px' : '1px'} solid ${
+          props.errorMessage ? errorColor : whiteColor
+        };
         }
 
         .light-appereance::placeholder{

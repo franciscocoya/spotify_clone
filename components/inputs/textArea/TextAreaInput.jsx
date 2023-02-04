@@ -1,4 +1,8 @@
-import { darkGrayColor, whiteColor } from '@styles/variables.module.scss';
+import {
+  darkGrayColor,
+  errorColor,
+  whiteColor,
+} from '@styles/variables.module.scss';
 
 function TextAreaInput({ ...props }) {
   return (
@@ -12,6 +16,8 @@ function TextAreaInput({ ...props }) {
           maxLength={800}
           placeholder={props.placeholder}
           className={props.light && 'light-appereance'}
+          onInput={props.handleInput}
+          required={props.isRequired}
         ></textarea>
       </div>
       <style jsx>{`
@@ -42,6 +48,10 @@ function TextAreaInput({ ...props }) {
           border-radius: 4px;
           padding: 14px;
           box-shadow: inset 0 0 0 1px ${darkGrayColor};
+        }
+
+        textarea:invalid{
+          border: 1px solid ${errorColor};
         }
 
         .light-appereance{

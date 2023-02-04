@@ -7,12 +7,12 @@ import axios from 'axios';
  * The rest of the fields such as bio or page banner are optional.
  * @returns
  */
-const create = (payload, errorCallback) => {
+const create = async (payload, errorCallback) => {
   try {
     const errors = validateCreateParams(payload);
-    if (errors?.length > 0) {
-      errorCallback(errors);
+    if (errors?.size > 0) {
       console.log(errors);
+      errorCallback(errors);
       return;
     }
 
@@ -41,7 +41,7 @@ const validateCreateParams = (payload) => {
 
   let errors = new Map();
 
-  if (!name || name.replace(/\s/g, '') === '') {
+  if (!name || name.replace(/\s/g, '').length === 0) {
     errors.set('name', 'components.messages.form.error.empty');
   }
 

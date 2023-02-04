@@ -53,6 +53,8 @@ $z-index-original-progress-bar: 7;
   fontGrayColor: $color-font-gray;
   popupColorTransparent: $color-popup-transparent;
   primaryColor: $color-primary;
+  primaryColorCompSeparation: $color-primary-comp-separation;
+  primaryColorCompSeparationTransparent: $color-primary-comp-separation-transparent;
   primaryColorEmphasis: $color-primary-emphasis;
   primaryColorEmphasisTransparent: $color-primary-emphasis-transparent;
   linkNotActiveColor: $color-link-not-active;
@@ -60,8 +62,6 @@ $z-index-original-progress-bar: 7;
   warningColor: $color-warning;
   whiteColor: $color-white;
   whiteColorTransparent: $color-white-transparent;
-  primaryColorCompSeparation: $color-primary-comp-separation;
-  primaryColorCompSeparationTransparent: $color-primary-comp-separation-transparent;
 
   topbarHeight: $topbar-height;
 

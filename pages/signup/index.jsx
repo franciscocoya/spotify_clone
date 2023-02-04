@@ -4,7 +4,10 @@ import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
 //import og from '@lib/og';
 import { createAccount as signUp } from '@lib/auth';
-import variables from '@styles/variables.module.scss';
+import {
+  primaryColorEmphasis,
+  whiteColor,
+} from '@styles/variables.module.scss';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
@@ -93,7 +96,7 @@ function SignUp() {
             type="submit"
             text={intl.formatMessage({ id: 'components.buttons.signUp' })}
             style="solid"
-            color={variables.primaryColorEmphasis}
+            color={primaryColorEmphasis}
             rounded
           />
         </BaseForm>
@@ -107,7 +110,7 @@ function SignUp() {
             type="button"
             text={intl.formatMessage({ id: 'components.buttons.login' })}
             style="text"
-            color={variables.whiteColor}
+            color={whiteColor}
             rounded
             action={() => router.push('/login')}
           />
