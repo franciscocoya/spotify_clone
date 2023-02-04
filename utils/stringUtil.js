@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 /**
  * Transform a durations in seconds into the following format: mm:ss
 
@@ -21,4 +23,32 @@ const prettyDuration = (duration) => {
   return `${formattedMinutes}:${formattedSeconds}`;
 };
 
-export { prettyDuration };
+/**
+ * Format bytes size as __KB (eg. 14951 bytes = 14.6KB)
+ * @param {*} bytes
+ * @param {*} decimal
+ * @returns
+ */
+const prettySize = (bytes, decimals = 2) => {
+  if (!+bytes) return '0 Bytes';
+
+  const k = 1024;
+  const dm = decimals < 0 ? 0 : decimals;
+  const sizes = ['Bytes', 'KB', 'MB'];
+
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
+};
+
+const convertToRelativeDate = (date) => {
+  //2023-01-18T16:05:56.041Z
+  if (!date) {
+    return;
+  }
+  const datePart1 = date.toString().split('T')[0];
+  const datePart2 = date.toString().split('T')[1];
+  return moment(`${datePart1} ${datePart2}`, 'YYYY-MM-DD h:mm:ss').fromNow();
+};
+
+export { prettyDuration, convertToRelativeDate, prettySize };

@@ -3,8 +3,11 @@ import BaseForm from '@components/Forms/BaseForm/BaseForm';
 import Logo from '@components/Images/Logo';
 import TextInput from '@components/Inputs/textInput/TextInput';
 //import og from '@lib/og';
-import variables from '@styles/variables.module.scss';
-import axios from 'axios';
+import { createAccount as signUp } from '@lib/auth';
+import {
+  primaryColorEmphasis,
+  whiteColor,
+} from '@styles/variables.module.scss';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
@@ -16,19 +19,14 @@ function SignUp() {
 
   const createAccount = async (e) => {
     e.preventDefault();
-
-    await axios
-      .post('/api/auth/signup', {
-        username: e.target.username,
-        email: e.target.email.value,
-        password: e.target.password.value,
-      })
-      .then((res) => {
-        console.log(res);
-        /* Redirect to Home page */
-        //router.push('/');
-      })
-      .catch((err) => console.log(err));
+    const payload = {
+      email: e.target.email.value,
+      emailConfirmation: e.target.emailConfirmation.value,
+      password: e.target.password.value,
+      passwordConfirmation: e.target.passwordConfirmation.value,
+      username: e.target.username.value,
+    };
+    await signUp(payload);
   };
 
   return (
@@ -40,6 +38,7 @@ function SignUp() {
       <main className={`${styles.main} full-page`}>
         <Logo width="182px" className={styles.logo} />
         <BaseForm onSubmit={createAccount} method="POST">
+          {/* email */}
           <TextInput
             name="email"
             required={true}
@@ -50,6 +49,7 @@ function SignUp() {
               id: 'page.signup.email_placeholder',
             })}
           />
+          {/* Email confirmation */}
           <TextInput
             name="emailConfirmation"
             required={true}
@@ -59,6 +59,7 @@ function SignUp() {
               id: 'page.signup.confirmEmail_placeholder',
             })}
           />
+          {/* Password */}
           <TextInput
             required={true}
             name="password"
@@ -68,6 +69,17 @@ function SignUp() {
               id: 'page.signup.createPassword_placeholder',
             })}
           />
+          {/* Password confirmation */}
+          <TextInput
+            required={true}
+            name="passwordConfirmation"
+            type="password"
+            label={intl.formatMessage({ id: 'page.signup.confirmPassword' })}
+            placeholder={intl.formatMessage({
+              id: 'page.signup.createPassword_placeholder',
+            })}
+          />
+          {/* Username */}
           <TextInput
             required={true}
             name="username"
@@ -84,7 +96,7 @@ function SignUp() {
             type="submit"
             text={intl.formatMessage({ id: 'components.buttons.signUp' })}
             style="solid"
-            color={variables.primaryColorEmphasis}
+            color={primaryColorEmphasis}
             rounded
           />
         </BaseForm>
@@ -98,7 +110,7 @@ function SignUp() {
             type="button"
             text={intl.formatMessage({ id: 'components.buttons.login' })}
             style="text"
-            color={variables.whiteColor}
+            color={whiteColor}
             rounded
             action={() => router.push('/login')}
           />

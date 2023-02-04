@@ -1,13 +1,13 @@
 import prisma from '@lib/prisma';
-import bcrypt from 'bcryptjs';
+var bcrypt = require('bcryptjs');
 
 const handler = async (req, res) => {
   const { email, password } = req.body;
 
   await prisma.user
-    .findMany({
+    .findUnique({
       where: {
-        OR: [{ email: { equals: email } }, { username: { equals: email } }],
+        email,
       },
     })
     .then(async (result) => {
@@ -15,10 +15,10 @@ const handler = async (req, res) => {
         res.status(404).json({
           msg: 'There are no exists a user with this email/username',
         });
+        await prisma.$disconnect();
       }
 
-      const remotePass = result[0]?.password;
-
+      const remotePass = result?.password;
       const isPasswordValid = await comparePassword(password, remotePass);
 
       if (!isPasswordValid) {
@@ -28,12 +28,13 @@ const handler = async (req, res) => {
       }
 
       res.status(201).json({
-        email: result.email,
         username: result.username,
+        email,
       });
     })
-    .catch((err) => {
+    .catch(async (err) => {
       console.log('ERROR. ' + err);
+      await prisma.$disconnect();
     });
 };
 
@@ -44,7 +45,7 @@ const handler = async (req, res) => {
  * @returns true if password is valid and false in other case
  */
 const comparePassword = async (plainPass, hashedPass, errorCallback) => {
-  return await bcrypt.compare(plainPass, hashedPass, errorCallback);
+  return await bcrypt.compareSync(plainPass, hashedPass);
 };
 
 export default handler;

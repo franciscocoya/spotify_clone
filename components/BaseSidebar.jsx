@@ -64,60 +64,73 @@ function BaseSidebar({ ...props }) {
   const intl = useIntl();
   return (
     <>
-      <nav id="app-navbar">
-        <Logo
-          width="150px"
-          extraStyle={{
-            marginBottom: '20px',
-            paddingLeft: variables.sidebarPaddingLeft,
-          }}
-        />
-        <ul>
-          {/* Home */}
-          <MenuItem
-            name={intl.formatMessage({ id: 'components.aside.home' })}
-            icon={<HomeIconOutline className="menu-icon" />}
-            activeIcon={<HomeIcon className="menu-icon" />}
-            linkPath="/"
+      <div className="app-navbar__wrapper">
+        <aside id="app-navbar">
+          <Logo
+            width="150px"
+            extraStyle={{
+              marginBottom: '20px',
+              paddingLeft: variables.sidebarPaddingLeft,
+            }}
           />
+          <ul>
+            {/* Home */}
+            <MenuItem
+              name={intl.formatMessage({ id: 'components.aside.home' })}
+              icon={<HomeIconOutline className="menu-icon" />}
+              activeIcon={<HomeIcon className="menu-icon" />}
+              linkPath="/"
+            />
 
-          {/* Search */}
-          <MenuItem
-            name={intl.formatMessage({ id: 'components.aside.search' })}
-            icon={<MagnifyGlassIconOutline className="menu-icon" />}
-            activeIcon={<MagnifyingGlassIcon className="menu-icon" />}
-            linkPath="/search"
-          />
+            {/* Search */}
+            <MenuItem
+              name={intl.formatMessage({ id: 'components.aside.search' })}
+              icon={<MagnifyGlassIconOutline className="menu-icon" />}
+              activeIcon={<MagnifyingGlassIcon className="menu-icon" />}
+              linkPath="/search"
+            />
 
-          {/* Library */}
-          <MenuItem
-            name={intl.formatMessage({ id: 'components.aside.library' })}
-            icon={<Squares2X2IconOutline className="menu-icon" />}
-            activeIcon={<Squares2X2Icon className="menu-icon" />}
-            linkPath="/library"
-          />
+            {/* Library */}
+            <MenuItem
+              name={intl.formatMessage({ id: 'components.aside.library' })}
+              icon={<Squares2X2IconOutline className="menu-icon" />}
+              activeIcon={<Squares2X2Icon className="menu-icon" />}
+              linkPath="/library"
+            />
 
-          <MenuItem
-            name={intl.formatMessage({
-              id: 'components.aside.createNewPlaylist',
-            })}
-            icon={<PlusIconOutline className="menu-icon" />}
-            activeIcon={<PlusIcon className="menu-icon" />}
-            linkPath="/playlist/new"
-          />
+            <MenuItem
+              name={intl.formatMessage({
+                id: 'components.aside.createNewPlaylist',
+              })}
+              icon={<PlusIconOutline className="menu-icon" />}
+              activeIcon={<PlusIcon className="menu-icon" />}
+              linkPath="/playlist/new"
+            />
 
-          <MenuItem
-            name={intl.formatMessage({ id: 'components.aside.favourites' })}
-            icon={<HeartIconOutline className="menu-icon" />}
-            activeIcon={<HeartIcon className="menu-icon" />}
-            linkPath="/favourites"
-          />
-        </ul>
-      </nav>
+            <MenuItem
+              name={intl.formatMessage({ id: 'components.aside.favourites' })}
+              icon={<HeartIconOutline className="menu-icon" />}
+              activeIcon={<HeartIcon className="menu-icon" />}
+              linkPath="/favourites"
+            />
+          </ul>
+        </aside>
+        <div id="app-aside-resize" data-target="aside"></div>
+      </div>
+
+      {/* <Script src="/vendor/sidebar.js" /> */}
 
       <style jsx>{`
-        nav {
+        .app-navbar__wrapper {
           grid-area: sidebar;
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          align-items: flex-start;
+          gap: 0;
+        }
+
+        aside {
           min-height: 100%;
           height: 100%;
           min-width: 15%;
@@ -136,6 +149,14 @@ function BaseSidebar({ ...props }) {
           flex-direction: column;
           gap: 10px;
           list-style-type: none;
+        }
+
+        #app-aside-resize {
+          height: 100%;
+          width: 4px;
+          background-color: red;
+          cursor: ew-resize;
+          user-select: none;
         }
       `}</style>
     </>

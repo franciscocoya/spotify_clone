@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-import '../styles/globals.css'
-
-export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
-=======
 import { AppWrapper } from '@context/state';
 import { DebugObserver } from '@hooks/useRecoilObserver';
 import { Poppins } from '@next/font/google';
-import { useRouter } from 'next/router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { RecoilRoot } from 'recoil';
 
 import '../styles/global.scss';
@@ -18,16 +13,20 @@ const roboto = Poppins({
 });
 
 export default function App({ Component, pageProps }) {
-  const { locale } = useRouter();
+  gsap.registerPlugin(ScrollTrigger);
+
   return (
     <AppWrapper>
       <RecoilRoot>
         <DebugObserver />
+        {/* <AuthProvider> */}
+        {/* <ProtectedRoute> */}
         <div className={`${roboto.className} root-container`}>
           <Component {...pageProps} />
         </div>
+        {/* </ProtectedRoute> */}
+        {/* </AuthProvider> */}
       </RecoilRoot>
     </AppWrapper>
   );
->>>>>>> database-model
 }

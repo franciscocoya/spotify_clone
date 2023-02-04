@@ -6,6 +6,10 @@
   margin: 0;
 }
 
+:root {
+  color-scheme: dark;
+}
+
 html,
 body,
 body > div:first-child,
@@ -14,11 +18,25 @@ div#__next > div {
   height: 100%;
 }
 
+p,
+a,
+span,
+label,
+button,
+h1,
+h2,
+h3,
+img,
+li {
+  user-select: none;
+}
+
 /* Typography styles */
 p,
 a,
 label {
   font-size: 1rem;
+
   //line-height: 1.5rem;
 }
 
@@ -42,6 +60,7 @@ button {
 h1 {
   font-size: 3.5rem;
   font-weight: 600;
+  line-height: 0.75em;
 }
 
 h2 {
@@ -74,6 +93,19 @@ main {
 .full-page {
   width: 100vw;
   height: 100vh;
+}
+
+// A content section. eg. Artist profile
+.content-section {
+  margin-bottom: 50px;
+}
+
+// If a section is empty
+.empty-section-message {
+  font-size: 3rem;
+  font-weight: 600;
+  color: variables.$color-dark-gray;
+  user-select: none;
 }
 
 @media (prefers-color-scheme: dark) {

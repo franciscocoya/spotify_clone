@@ -11,7 +11,9 @@
       "@vendor/*": ["public/vendor/*"],
       "@images/*": ["public/images/*"],
       "@atoms/*": ["atoms/*"],
-      "@hooks/*": ["hooks/*"]
+      "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"],
+      "@prisma/*": ["prisma/*"]
     }
   }
 }

@@ -1,3 +1,5 @@
+var bcrypt = require('bcryptjs');
+
 /**
  * Login with credentials.
  *
@@ -7,12 +9,13 @@
 const handler = async (req, res) => {
   const { email, password, username } = req.body;
 
+  console.log(req.headers);
+
   //const hashedPassword = await bcrypt.hashSync(password, 10);
 
+  console.log(password);
   res.status(201).json({
-    email,
-    password,
-    username,
+    data: req.body,
   });
 
   // await prisma.user
@@ -24,15 +27,15 @@ const handler = async (req, res) => {
   //     },
   //   })
   //   .then(() => {
-  //     console.log('Session established !!');
-
   //     return res.state(201).json({
   //       email,
   //       username,
   //     });
   //   })
-  //   .catch((e) => {
+  //   .catch(async (e) => {
+  //     handle(err, () => {});
   //     console.error('An error ocurren while creating the account. ' + e);
+  //     await prisma.$disconnect();
   //     process.exit(1);
   //   });
 };

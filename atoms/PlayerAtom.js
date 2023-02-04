@@ -6,12 +6,6 @@ const sufflePlayState = atom({
   default: false,
 });
 
-/* If user selects repeat option */
-const repeatCurrentSongState = atom({
-  key: 'repeatCurrentSongState',
-  default: false,
-});
-
 /* Value for the progress bar of the player */
 const playerProgressBarState = atom({
   key: 'playerProgressBarState',
