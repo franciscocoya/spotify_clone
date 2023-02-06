@@ -1,11 +1,9 @@
 import variables from '@styles/variables.module.scss';
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { MdVerified } from 'react-icons/md';
 
 function ArtistBanner({ ...props }) {
-  const [lastScroll, setLastScroll] = useState(0); // Record window last scroll position
-  const [backgroundScale, setBackgroundScale] = useState(1);
   const overlay = useRef(null);
   const background = useRef(null);
 

@@ -71,9 +71,7 @@ function TrackCard({ ...props }) {
               }}
               onMouseEnter={() => setIsArtistHover(true)}
               onMouseLeave={() => setIsArtistHover(false)}
-              onClick={selectArtistInfo(
-                Math.random().toString(36).substring(2, 6)
-              )}
+              onClick={null}
               scroll={false}
             >
               {props?.title}
