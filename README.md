@@ -1,7 +1,5 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=coverage)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone)
-
-# Spotify Clone using NextJS
 
 Spotify web player currently developed under React Framework. This streamming platform allows you to listen all music in the world and it also has lots of engineering behind it.
 
@@ -9,7 +7,7 @@ Spotify web player currently developed under React Framework. This streamming pl
 
 First, run the development server:
 
-```bash
+```
 npm run dev
 # or
 yarn dev
