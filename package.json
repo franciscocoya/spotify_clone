@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "test": "jest --verbose",
+    "test": "jest --verbose --coverage",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -16,6 +16,13 @@
     "prisma": "npx prisma studio",
     "prisma:schema": "npx prisma db push",
     "seed": "npx prisma db seed"
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(js|jsx)$",
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ]
   },
   "dependencies": {
     "@ffmpeg/core": "^0.11.0",
