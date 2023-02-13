@@ -30,7 +30,7 @@
     "dotenv": "^16.0.3",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
-    "firebase": "^9.16.0",
+    "firebase": "^9.17.1",
     "gsap": "^3.11.4",
     "heroicons": "^2.0.13",
     "howler": "^2.2.3",
