@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@components/*": ["components/*"],
-      "@layouts/*": ["layouts/*"],
-      "@styles/*": ["styles/*"],
-      "@context/*": ["context/*"],
-      "@utils/*": ["utils/*"],
-      "@lib/*": ["lib/*"],
-      "@vendor/*": ["public/vendor/*"],
-      "@images/*": ["public/images/*"],
-      "@atoms/*": ["atoms/*"],
-      "@hooks/*": ["hooks/*"],
-      "@services/*": ["services/*"],
-      "@prisma/*": ["prisma/*"]
+      "@/components/*": ["/src/components/*"],
+      "@/layouts/*": ["/src/components/layouts/*"],
+      "@/styles/*": ["/src/styles/*"],
+      "@/context/*": ["/src/context/*"],
+      "@/utils/*": ["/src/utils/*"],
+      "@/lib/*": ["/src/lib/*"],
+      "@/vendor/*": ["/public/vendor/*"],
+      "@/images/*": ["/public/images/*"],
+      "@/atoms/*": ["/src/atoms/*"],
+      "@/hooks/*": ["/src/hooks/*"],
+      "@/services/*": ["/src/services/*"],
+      "@/prisma/*": ["/src/prisma/*"]
     }
   }
 }

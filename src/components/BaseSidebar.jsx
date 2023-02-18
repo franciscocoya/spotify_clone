@@ -16,7 +16,7 @@ import {
 import variables from '@styles/variables.module.scss';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
-import Logo from './Images/Logo';
+import Logo from './images/Logo';
 
 function MenuItem({ icon, activeIcon, name, linkPath }) {
   const router = useRouter();
