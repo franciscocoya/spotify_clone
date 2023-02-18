@@ -6,12 +6,9 @@ import { render } from '@testing-library/react';
  */
 
 describe('Input tests', () => {
-
   // Scenario 0: Check if input rendered successfully.
   test('Input type text is rendered', () => {
-    const component1 = render(
-      <TextInput type="text" name="test-field" />
-    );
+    const component1 = render(<TextInput type="text" name="test-field" />);
     expect(component1).toBeInTheDocument();
   });
 
