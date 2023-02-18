@@ -1,4 +1,4 @@
-import { artistRoute } from '@lib/apiRoutes';
+import { artistRoute } from '@/lib/apiRoutes';
 import axios from 'axios';
 
 /**
@@ -39,7 +39,7 @@ const create = async (payload, errorCallback) => {
 const validateCreateParams = (payload) => {
   const { name, email, password, bio, pageBanner } = payload;
 
-  let errors = new Map();
+  let errors;
 
   if (!name || name.replace(/\s/g, '').length === 0) {
     errors.set('name', 'components.messages.form.error.empty');
@@ -54,7 +54,7 @@ const validateCreateParams = (payload) => {
  * @returns All artist information.
  */
 const getArtistById = async (id) => {
-  await axios.get(`${artistRoute}/${id}`);
+  const result = await axios.get(`${artistRoute}/${id}`);
   return result.data.data;
 };
 

@@ -1,4 +1,4 @@
-import LoadingIcon from '@images/three-dots-animated.svg';
+import LoadingIcon from '@/images/three-dots-animated.svg';
 import {
   darkBlackColor,
   primaryColor,

@@ -18,4 +18,4 @@ const nextSongState = atom({
   default: 'song1',
 });
 
-export { songIsPlayingState };
+export { currentPlaylistState, previousSongState, nextSongState };

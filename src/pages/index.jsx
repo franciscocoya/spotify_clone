@@ -1,12 +1,12 @@
 import { homeSongsState } from '@atoms/SongAtom';
-import TrackCard from '@components/cards/TrackCard';
-import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
-import MetadataLayout from '@components/layouts/MetadataLayout';
-import { getLimitedTracks } from '@services/trackCrudService';
+import TrackCard from 'components/cards/TrackCard';
+import BaseLayout from 'components/layouts/BaseLayoutWithSidebar';
+import MetadataLayout from 'components/layouts/MetadataLayout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useRecoilState } from 'recoil';
+import { getLimitedTracks } from 'services/trackCrudService';
 
 function Home() {
   const router = useRouter();

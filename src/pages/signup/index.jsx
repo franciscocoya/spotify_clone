@@ -1,13 +1,13 @@
-import BaseButton from '@components/buttons/BaseButton';
-import BaseForm from '@components/Forms/BaseForm/BaseForm';
-import Logo from '@components/Images/Logo';
-import TextInput from '@components/Inputs/textInput/TextInput';
+import BaseButton from '@/components/buttons/BaseButton';
+import BaseForm from '@/components/Forms/BaseForm/BaseForm';
+import Logo from '@/components/Images/Logo';
+import TextInput from '@/components/Inputs/textInput/TextInput';
 //import og from '@lib/og';
-import { createAccount as signUp } from '@lib/auth';
+import { createAccount as signUp } from '@/lib/auth';
 import {
   primaryColorEmphasis,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';

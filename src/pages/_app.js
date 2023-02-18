@@ -1,5 +1,5 @@
-import { AppWrapper } from '@context/state';
-import { DebugObserver } from '@hooks/useRecoilObserver';
+import { AppWrapper } from '@/context/state';
+import { DebugObserver } from '@/hooks/useRecoilObserver';
 import { Poppins } from '@next/font/google';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
