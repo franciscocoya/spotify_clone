@@ -1,6 +1,8 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone) [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=franciscocoya_spotify_clone&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=franciscocoya_spotify_clone)
 
+![banner_spotify_clone](https://user-images.githubusercontent.com/56480356/219876630-265d19f1-5a3f-487f-95bd-ecd0484c7749.png)
+
 Spotify web player currently developed under React Framework. This streamming platform allows you to listen all music in the world and it also has lots of engineering behind it.
 
 ## Getting Started
@@ -43,14 +45,6 @@ This component reads all music genres from a JSON file using the getStaticProps 
 To improve user experience, player and volume control are fully responsive. The next snapshot shows the artist page on tablet devices.
 
 <img src="https://user-images.githubusercontent.com/56480356/213693172-1c8e2830-777c-4b54-8438-9a8148c1d944.png" alt="App on tablet devices" width="400px" height="auto"/>
-
-## Pages
-
-### Upload a track
-
-Available for artist role only.
-
-<img src="https://user-images.githubusercontent.com/56480356/214150052-136b2442-95a5-4aa1-8002-ab1a14f1b8d9.png" alt="Upload a track page snapshot" width="90%" height="auto"/>
 
 <br />
 
