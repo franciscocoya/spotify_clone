@@ -46,14 +46,6 @@ To improve user experience, player and volume control are fully responsive. The 
 
 <img src="https://user-images.githubusercontent.com/56480356/213693172-1c8e2830-777c-4b54-8438-9a8148c1d944.png" alt="App on tablet devices" width="400px" height="auto"/>
 
-## Pages
-
-### Upload a track
-
-Available for artist role only.
-
-<img src="https://user-images.githubusercontent.com/56480356/214150052-136b2442-95a5-4aa1-8002-ab1a14f1b8d9.png" alt="Upload a track page snapshot" width="90%" height="auto"/>
-
 <br />
 
 _The original design and logo are the property of Spotify. The project is for personal and academic purposes only. [© 2023 Spotify AB](https://open.spotify.com/)_
