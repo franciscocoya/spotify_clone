@@ -1,6 +1,6 @@
-import ProgressBar from '@components/ProgressBar';
-import useAudioPlayer from '@hooks/useAudioPlayer';
-import variables from '@styles/variables.module.scss';
+import ProgressBar from '@/components/ProgressBar';
+import useAudioPlayer from '@/hooks/useAudioPlayer';
+import variables from '@/styles/variables.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { SlVolume1, SlVolume2, SlVolumeOff } from 'react-icons/sl';
 

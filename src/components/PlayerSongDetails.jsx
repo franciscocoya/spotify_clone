@@ -1,6 +1,6 @@
+import variables from '@/styles/variables.module.scss';
 import { HeartIcon as HeartIconOutline } from '@heroicons/react/24/outline';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import variables from '@styles/variables.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';

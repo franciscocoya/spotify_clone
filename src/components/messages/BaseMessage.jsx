@@ -3,7 +3,7 @@ import {
   errorColor,
   primaryColorEmphasis,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useEffect, useRef } from 'react';
 
 function BaseMessage({ ...props }) {

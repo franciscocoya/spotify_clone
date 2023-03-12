@@ -1,4 +1,4 @@
-import useUploadTrack from '@hooks/tracks/useUploadTrack';
+import useUploadTrack from '@/hooks/tracks/useUploadTrack';
 import {
   bodyBgDarkColor,
   darkBlackColor,
@@ -6,7 +6,7 @@ import {
   darkMidGrayColor,
   primaryColorCompSeparationTransparent,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useEffect, useRef, useState } from 'react';
 
 export default function AutoCompleteTextInput({ ...props }) {

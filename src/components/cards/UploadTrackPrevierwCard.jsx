@@ -1,6 +1,6 @@
+import useUploadTrack from '@/hooks/tracks/useUploadTrack';
+import { darkBlackColor } from '@/styles/variables.module.scss';
 import { PlayIcon } from '@heroicons/react/24/solid';
-import useUploadTrack from '@hooks/tracks/useUploadTrack';
-import { darkBlackColor } from '@styles/variables.module.scss';
 import { IoMusicalNotes } from 'react-icons/io5';
 import { useIntl } from 'react-intl';
 

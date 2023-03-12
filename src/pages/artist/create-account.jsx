@@ -1,17 +1,17 @@
-import BaseButton from '@components/buttons/BaseButton';
-import BaseDragAndDropArea from '@components/dragAndDrop/BaseDragAndDropArea';
-import BaseForm from '@components/Forms/BaseForm/BaseForm';
-import TextAreaInput from '@components/inputs/textArea/TextAreaInput';
-import TextInput from '@components/Inputs/textInput/TextInput';
-import useArtistAuth from '@hooks/artist/useArtistAuth';
-//import og from '@lib/og';
+import BaseButton from '@/components/buttons/BaseButton';
+import BaseDragAndDropArea from '@/components/dragAndDrop/BaseDragAndDropArea';
+import BaseForm from '@/components/Forms/BaseForm/BaseForm';
+import TextAreaInput from '@/components/inputs/textArea/TextAreaInput';
+import TextInput from '@/components/Inputs/textInput/TextInput';
+import useArtistAuth from '@/hooks/artist/useArtistAuth';
+
 import {
   blackColorTransparent,
   errorColor,
   primaryColorEmphasis,
-  whiteColor,
-} from '@styles/variables.module.scss';
-import { prettySize } from '@utils/stringUtil';
+  whiteColor
+} from '@/styles/variables.module.scss';
+import { prettySize } from '@/utils/stringUtil';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -46,7 +46,7 @@ function CreateArtistAccount() {
   return (
     <>
       <Head>
-        <title>CreateArtistAccount - Spotify</title>
+        <title>Create an artist account - Spotify</title>
         {/* {og({ title: 'Create an account on Spotify' })} */}
       </Head>
       <main className="artist-create-account__wrapper">

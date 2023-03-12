@@ -1,13 +1,11 @@
-import { homeSongsState } from '@atoms/SongAtom';
-import TrackCard from 'components/cards/TrackCard';
-import BaseLayout from 'components/layouts/BaseLayoutWithSidebar';
-import MetadataLayout from 'components/layouts/MetadataLayout';
+import { getLimitedTracks } from '@/api/trackCrudService';
+import { homeSongsState } from '@/atoms/SongAtom';
+import BaseLayout from '@/components/layouts/BaseLayoutWithSidebar';
+import MetadataLayout from '@/components/layouts/MetadataLayout';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 import { useRecoilState } from 'recoil';
-import { getLimitedTracks } from 'services/trackCrudService';
-
 function Home() {
   const router = useRouter();
   const intl = useIntl();
@@ -32,7 +30,7 @@ function Home() {
       >
         <BaseLayout showGradient={true} currentColor={'rgb(24, 208, 96)'}>
           <div>
-            {songs &&
+            {/* {songs &&
               songs?.map((song, index) => (
                 <TrackCard
                   key={index}
@@ -43,7 +41,7 @@ function Home() {
                   createdAt={song.releaseDate}
                   cover={song.cover}
                 />
-              ))}
+              ))} */}
             {/* <CardSection /> */}
             {/* <p>{songs?.length}</p> */}
             {/* <TrackCard />

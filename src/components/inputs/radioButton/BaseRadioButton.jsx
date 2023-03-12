@@ -1,4 +1,4 @@
-import { whiteColor } from '@styles/variables.module.scss';
+import { whiteColor } from '@/styles/variables.module.scss';
 
 function BaseRadioButton({ ...props }) {
   return (

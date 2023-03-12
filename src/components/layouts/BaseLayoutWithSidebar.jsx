@@ -1,7 +1,7 @@
-import BasePlayer from '@components/BasePlayer';
-import BaseSidebar from '@components/BaseSidebar';
-import BaseToolbar from '@components/BaseToolbar';
-import variables from '@styles/variables.module.scss';
+import BasePlayer from '@/components/BasePlayer';
+import BaseSidebar from '@/components/BaseSidebar';
+import BaseToolbar from '@/components/BaseToolbar';
+import variables from '@/styles/variables.module.scss';
 
 function BaseLayout({ children, ...props }) {
   return (

@@ -1,22 +1,25 @@
-import BaseButton from '@components/buttons/BaseButton';
-import BaseForm from '@components/Forms/BaseForm/BaseForm';
-import BaseComboBox from '@components/inputs/comboBox/BaseComboBox';
-import BaseRadioButton from '@components/inputs/radioButton/BaseRadioButton';
-import AutoCompleteTextInput from '@components/inputs/textInput/AutoCompleteTextInput';
-import TextInput from '@components/inputs/textInput/TextInput';
-import BaseLayout from '@components/layouts/BaseLayoutWithSidebar';
-import MetadataLayout from '@components/layouts/MetadataLayout';
-import useUploadTrack from '@hooks/tracks/useUploadTrack';
-import { primaryColorEmphasis } from '@styles/variables.module.scss';
-import { prettyDuration } from '@utils/stringUtil';
+import BaseButton from '@/components/buttons/BaseButton';
+import BaseForm from '@/components/Forms/BaseForm/BaseForm';
+import BaseComboBox from '@/components/inputs/comboBox/BaseComboBox';
+import BaseRadioButton from '@/components/inputs/radioButton/BaseRadioButton';
+import AutoCompleteTextInput from '@/components/inputs/textInput/AutoCompleteTextInput';
+import TextInput from '@/components/inputs/textInput/TextInput';
+import BaseLayout from '@/components/layouts/BaseLayoutWithSidebar';
+import MetadataLayout from '@/components/layouts/MetadataLayout';
+import BaseMessage from '@/components/messages/BaseMessage';
+import useUploadTrack from '@/hooks/tracks/useUploadTrack';
+import { primaryColorEmphasis } from '@/styles/variables.module.scss';
+import { prettyDuration } from '@/utils/stringUtil';
+import { promises as fs } from 'fs';
 import dynamic from 'next/dynamic';
+import path from 'path';
 import { useIntl } from 'react-intl';
 
 const UploadTrackPreviewCard = dynamic(() =>
-  import('@components/cards/UploadTrackPrevierwCard')
+  import('@/components/cards/UploadTrackPrevierwCard')
 );
 const BaseDragAndDropArea = dynamic(() =>
-  import('@components/dragAndDrop/BaseDragAndDropArea')
+  import('@/components/dragAndDrop/BaseDragAndDropArea')
 );
 
 function UploadTrackPage({ ...props }) {
@@ -300,12 +303,8 @@ function UploadTrackPage({ ...props }) {
   );
 }
 
-import BaseMessage from '@components/messages/BaseMessage';
-import { promises as fs } from 'fs';
-import path from 'path';
-
 export async function getStaticProps() {
-  const jsonDirectory = path.join(process.cwd(), 'json');
+  const jsonDirectory = path.join(process.cwd(), 'src', 'json');
   const fileContents = await fs.readFile(
     jsonDirectory + '/music_genres.json',
     'utf8'

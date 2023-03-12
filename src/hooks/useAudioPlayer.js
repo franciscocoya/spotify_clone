@@ -3,7 +3,7 @@ import {
   elapsedPlayingState,
   songDurationState,
   songIsPlayingState,
-} from '@atoms/SongAtom';
+} from '@/atoms/SongAtom';
 
 import {
   isProgressTouchingState,
@@ -11,7 +11,7 @@ import {
   playerRepeatCurrentSongState,
   playerVolumeCopyState,
   playerVolumeState,
-} from '@atoms/PlayerAtom';
+} from '@/atoms/PlayerAtom';
 
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';

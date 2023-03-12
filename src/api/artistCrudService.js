@@ -3,6 +3,7 @@ import axios from 'axios';
 
 /**
  * Create an artist account.
+
  * @param {*} payload Payload must have at least the following fields: name, email and password.
  * The rest of the fields such as bio or page banner are optional.
  * @returns

@@ -1,5 +1,5 @@
-import variables from '@styles/variables.module.scss';
-import { hideProgressIcons } from '@vendor/slider';
+import variables from '@/styles/variables.module.scss';
+import { hideProgressIcons } from '@/vendor/slider';
 
 function ProgressBar({ ...props }) {
   return (

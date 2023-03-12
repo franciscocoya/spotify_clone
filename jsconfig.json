@@ -12,7 +12,7 @@
       "@/images/*": ["/public/images/*"],
       "@/atoms/*": ["/src/atoms/*"],
       "@/hooks/*": ["/src/hooks/*"],
-      "@/services/*": ["/src/services/*"],
+      "@/api/*": ["/src/api/*"],
       "@/prisma/*": ["/src/prisma/*"]
     }
   }

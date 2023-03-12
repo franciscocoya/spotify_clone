@@ -2,7 +2,7 @@ import {
   bodyBgDarkColor,
   darkGrayColor,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useRef, useState } from 'react';
 import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 import styles from './BaseComboBox.module.scss';

@@ -1,10 +1,10 @@
-import NextSongButton from '@components/buttons/NextSongButton';
-import PlayPauseButton from '@components/buttons/PlayPauseButton';
-import PreviousSongButton from '@components/buttons/PreviousSongButton';
-import RepeatSongButton from '@components/buttons/RepeatSongButton';
-import SufflePlayButton from '@components/buttons/SufflePlayButton';
-import CurrentSongAudio from '@components/CurrentSongAudio';
-import useAudioPlayer from '@hooks/useAudioPlayer';
+import NextSongButton from '@/components/buttons/NextSongButton';
+import PlayPauseButton from '@/components/buttons/PlayPauseButton';
+import PreviousSongButton from '@/components/buttons/PreviousSongButton';
+import RepeatSongButton from '@/components/buttons/RepeatSongButton';
+import SufflePlayButton from '@/components/buttons/SufflePlayButton';
+import CurrentSongAudio from '@/components/CurrentSongAudio';
+import useAudioPlayer from '@/hooks/useAudioPlayer';
 import { useEffect, useRef } from 'react';
 
 function Controls({ ...props }) {

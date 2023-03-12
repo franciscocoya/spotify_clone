@@ -1,7 +1,7 @@
-import Player from '@components/Player';
-import PlayerSongDetails from '@components/PlayerSongDetails';
-import VolumeControl from '@components/VolumeControl';
-import variables from '@styles/variables.module.scss';
+import Player from '@/components/Player';
+import PlayerSongDetails from '@/components/PlayerSongDetails';
+import VolumeControl from '@/components/VolumeControl';
+import variables from '@/styles/variables.module.scss';
 
 function BasePlayer({ ...props }) {
   return (

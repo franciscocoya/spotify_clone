@@ -5,10 +5,10 @@ import {
   trackBlobDataState,
   trackToUploadDetailsState,
   trackUploadTitlePreviewState,
-} from '@atoms/uploadTrackAtom';
-import { uploadTrackRoute } from '@lib/apiRoutes';
-import { checkIsAudioFile } from '@utils/audioUtil';
-import { checkIsImageFile, compressImage } from '@utils/imageUtil';
+} from '@/atoms/uploadTrackAtom';
+import { uploadTrackRoute } from '@/lib/apiRoutes';
+import { checkIsAudioFile } from '@/utils/audioUtil';
+import { checkIsImageFile, compressImage } from '@/utils/imageUtil';
 import axios from 'axios';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';

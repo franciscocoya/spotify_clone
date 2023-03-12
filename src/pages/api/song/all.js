@@ -1,4 +1,4 @@
-import { ref, storage } from '@lib/firebaseConfig';
+import { ref, storage } from '@/lib/firebaseConfig';
 import { PrismaClient } from '@prisma/client';
 import { getDownloadURL } from 'firebase/storage';
 const prisma = new PrismaClient();

@@ -13,7 +13,7 @@ import {
   Squares2X2Icon,
 } from '@heroicons/react/24/solid';
 
-import variables from '@styles/variables.module.scss';
+import variables from '@/styles/variables.module.scss';
 import { useRouter } from 'next/router';
 import { useIntl } from 'react-intl';
 import Logo from './images/Logo';

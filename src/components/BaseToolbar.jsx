@@ -1,9 +1,9 @@
+import variables from '@/styles/variables.module.scss';
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
 } from '@heroicons/react/24/solid';
-import variables from '@styles/variables.module.scss';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 import { useIntl } from 'react-intl';

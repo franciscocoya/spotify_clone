@@ -1,7 +1,7 @@
-import ProgressBar from '@components/ProgressBar';
-import useAudioPlayer from '@hooks/useAudioPlayer';
-import variables from '@styles/variables.module.scss';
-import { prettyDuration } from '@utils/stringUtil';
+import ProgressBar from '@/components/ProgressBar';
+import useAudioPlayer from '@/hooks/useAudioPlayer';
+import variables from '@/styles/variables.module.scss';
+import { prettyDuration } from '@/utils/stringUtil';
 import { useEffect, useRef } from 'react';
 
 function PlayerProgress({ ...props }) {

@@ -1,6 +1,6 @@
-import AudioControlButton from '@components/AudioControlButton';
-import useAudioPlayer from '@hooks/useAudioPlayer';
-import variables from '@styles/variables.module.scss';
+import AudioControlButton from '@/components/AudioControlButton';
+import useAudioPlayer from '@/hooks/useAudioPlayer';
+import variables from '@/styles/variables.module.scss';
 import { RiRepeatLine } from 'react-icons/ri';
 
 function RepeatSongButton({ ...props }) {

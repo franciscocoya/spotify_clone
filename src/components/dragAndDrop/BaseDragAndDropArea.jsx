@@ -1,9 +1,9 @@
-import PopupMessage from '@components/messages/PopupMessage';
+import PopupMessage from '@/components/messages/PopupMessage';
 import {
   primaryColorEmphasis,
   primaryColorEmphasisTransparent,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useEffect, useRef } from 'react';
 import { useIntl } from 'react-intl';
 

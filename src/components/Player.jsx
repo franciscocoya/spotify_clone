@@ -1,5 +1,5 @@
-import Controls from '@components/ButtonControls';
-import PlayerProgress from '@components/PlayerProgress';
+import Controls from '@/components/ButtonControls';
+import PlayerProgress from '@/components/PlayerProgress';
 
 function Player({ ...props }) {
   return (

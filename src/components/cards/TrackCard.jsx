@@ -1,8 +1,8 @@
+import useArtist from '@/hooks/artist/useArtist';
+import { getArtistNameById } from '@/services/artistCrudService';
+import variables from '@/styles/variables.module.scss';
+import { convertToRelativeDate } from '@/utils/stringUtil';
 import { HeartIcon } from '@heroicons/react/24/solid';
-import useArtist from '@hooks/artist/useArtist';
-import { getArtistNameById } from '@services/artistCrudService';
-import variables from '@styles/variables.module.scss';
-import { convertToRelativeDate } from '@utils/stringUtil';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';

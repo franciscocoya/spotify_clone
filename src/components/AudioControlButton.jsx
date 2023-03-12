@@ -1,4 +1,4 @@
-import variables from '@styles/variables.module.scss';
+import variables from '@/styles/variables.module.scss';
 
 function AudioControlButton({ children, ...props }) {
   return (

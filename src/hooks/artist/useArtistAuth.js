@@ -1,3 +1,4 @@
+import { create } from '@/api/artistCrudService';
 import {
   artistBioState,
   artistConfirmPasswordState,
@@ -5,9 +6,8 @@ import {
   artistNameState,
   artistPageBannerState,
   artistPasswordState,
-} from '@atoms/artistAtom';
-import { create } from '@services/artistCrudService';
-import { checkIsImageFile, compressImage } from '@utils/imageUtil';
+} from '@/atoms/artistAtom';
+import { checkIsImageFile, compressImage } from '@/utils/imageUtil';
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 

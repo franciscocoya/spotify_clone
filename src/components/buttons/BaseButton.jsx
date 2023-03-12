@@ -3,8 +3,8 @@ import {
   darkBlackColor,
   primaryColor,
   whiteColor,
-} from '@styles/variables.module.scss';
-import { generateColorShades, getContrastColor } from '@utils/colorUtil';
+} from '@/styles/variables.module.scss';
+import { generateColorShades, getContrastColor } from '@/utils/colorUtil';
 
 let textColor = primaryColor;
 

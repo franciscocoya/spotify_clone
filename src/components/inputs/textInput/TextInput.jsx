@@ -3,7 +3,7 @@ import {
   errorColor,
   whiteColor,
   whiteColorTransparent,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useState } from 'react';
 import { IoEyeOffSharp, IoEyeSharp } from 'react-icons/io5';
 import { RiErrorWarningLine } from 'react-icons/ri';

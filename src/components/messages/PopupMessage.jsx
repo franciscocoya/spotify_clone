@@ -1,7 +1,7 @@
 import {
   popupColorTransparent,
   whiteColor,
-} from '@styles/variables.module.scss';
+} from '@/styles/variables.module.scss';
 import { useEffect, useRef } from 'react';
 function PopupMessage({ ...props }) {
   const popup = useRef(null);

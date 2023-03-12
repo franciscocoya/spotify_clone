@@ -1,5 +1,5 @@
-import AudioControlButton from '@components/AudioControlButton';
-import variables from '@styles/variables.module.scss';
+import AudioControlButton from '@/components/AudioControlButton';
+import variables from '@/styles/variables.module.scss';
 import { BiPlay } from 'react-icons/bi';
 import { GiPauseButton } from 'react-icons/gi';
 

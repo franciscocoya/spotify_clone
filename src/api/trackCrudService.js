@@ -1,4 +1,4 @@
-import { homeTracks } from '@lib/apiRoutes';
+import { homeTracks } from '@/lib/apiRoutes';
 import axios from 'axios';
 
 const getLimitedTracks = async (number) => {
