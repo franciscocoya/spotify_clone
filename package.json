@@ -39,7 +39,7 @@
     "eslint-config-next": "13.2.4",
     "firebase": "^9.17.1",
     "gsap": "^3.11.4",
-    "heroicons": "^2.0.13",
+    "heroicons": "^2.0.17",
     "howler": "^2.2.3",
     "jest": "^29.4.2",
     "jsmediatags": "^3.9.7",
