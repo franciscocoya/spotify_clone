@@ -28,7 +28,7 @@
     "@ffmpeg/core": "^0.11.0",
     "@ffmpeg/ffmpeg": "^0.11.6",
     "@heroicons/react": "^2.0.16",
-    "@next/font": "13.4.2",
+    "@next/font": "13.4.10",
     "@prisma/client": "^4.11.0",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
