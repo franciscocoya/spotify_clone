@@ -29,7 +29,7 @@
     "@ffmpeg/ffmpeg": "^0.11.6",
     "@heroicons/react": "^2.0.16",
     "@next/font": "13.4.2",
-    "@prisma/client": "^4.11.0",
+    "@prisma/client": "^5.1.1",
     "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "compressorjs": "^1.1.1",
