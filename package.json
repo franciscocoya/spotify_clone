@@ -68,6 +68,6 @@
     "@testing-library/react": "^14.0.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.0",
-    "prisma": "^4.13.0"
+    "prisma": "^5.1.1"
   }
 }
